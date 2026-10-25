@@ -1,0 +1,2239 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saga Luxury Properties — Real Estate Management Platform &amp; Team CRM</title>
+  <meta name="description" content="Saga Luxury Properties is a centralized real-estate management workspace for tracking leads, property records, projects, inquiries, team attendance, and business operations." />
+  
+  <!-- Open Graph Metadata -->
+  <meta property="og:title" content="Saga Luxury Properties — Real Estate Management Platform" />
+  <meta property="og:description" content="One platform. Multiple tenants. Access your centralized real-estate CRM workspace for leads, projects, properties, inquiries, attendance, and operational reporting." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://360dubai.ae/" />
+  <meta property="og:image" content="saga.png" />
+
+  <!-- Favicon using the supplied brand asset -->
+  <link rel="icon" type="image/png" href="saga.png" />
+
+  <!-- Google Fonts: Plus Jakarta Sans & Inter for refined editorial + UI hierarchy -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              forest: '#102E2C',
+              deep: '#0A2826',
+              teal: '#0F766E',
+              tealHover: '#0B6963',
+              orange: '#C87900',
+            },
+            surface: {
+              main: '#F3EFE7',
+              soft: '#F2EEE6',
+              primary: '#FFFDF9',
+              secondary: '#FAF7F0',
+            },
+            border: {
+              subtle: '#E6DED1',
+              strong: '#D9CEBD',
+            },
+            ink: {
+              primary: '#20211F',
+              secondary: '#625F58',
+              muted: '#888176',
+              onDark: '#FFFDF9',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+          },
+          boxShadow: {
+            'card': '0 4px 20px -2px rgba(16, 46, 44, 0.05), 0 1px 3px 0 rgba(16, 46, 44, 0.03)',
+            'card-hover': '0 16px 36px -6px rgba(16, 46, 44, 0.10), 0 4px 10px -2px rgba(16, 46, 44, 0.05)',
+            'mockup': '0 24px 56px -12px rgba(10, 40, 38, 0.22), 0 4px 16px -4px rgba(10, 40, 38, 0.08)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      /* Primary brand surfaces */
+      --brand-forest: #102E2C;
+      --brand-forest-deep: #0A2826;
+
+      /* Primary actions */
+      --brand-teal: #0F766E;
+      --brand-teal-hover: #0B6963;
+
+      /* Warm backgrounds */
+      --background-main: #F3EFE7;
+      --background-soft: #F2EEE6;
+      --surface-primary: #FFFDF9;
+      --surface-secondary: #FAF7F0;
+
+      /* Borders */
+      --border-subtle: #E6DED1;
+      --border-strong: #D9CEBD;
+
+      /* Typography */
+      --text-primary: #20211F;
+      --text-secondary: #625F58;
+      --text-muted: #888176;
+      --text-on-dark: #FFFDF9;
+
+      /* Accent */
+      --brand-orange: #C87900;
+
+      /* Utility */
+      --focus-ring: #0F766E;
+    }
+
+    body {
+      background-color: var(--background-main);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, .font-display {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    /* =====================================================================
+       PRECISION LOGO FRAMING FOR SUPPLIED SAGA.PNG ASSET
+       The original saga.png file is a 1:1 square canvas (500x500) where the
+       visible emblem and wordmark occupy x: 7.9%–92.1% and y: 35.3%–62.8%,
+       surrounded by transparent padding.
+       .brand-logo-frame trims only the dead transparent canvas space while
+       preserving 100% of the original artwork and its native 1:1 aspect
+       ratio without stretching, filtering, or distorting a single pixel.
+       ===================================================================== */
+    .brand-logo-frame {
+      position: relative;
+      display: block;
+      aspect-ratio: 86 / 32;
+      overflow: hidden;
+      flex-shrink: 0;
+      user-select: none;
+    }
+
+    .brand-logo-frame > img {
+      position: absolute;
+      left: -8.3%;
+      top: 50%;
+      width: 116.6%;
+      height: auto;
+      max-width: none;
+      transform: translateY(-49.1%);
+      object-fit: contain;
+      pointer-events: none;
+    }
+
+    /* Fluid Typography Scale per Specification */
+    .hero-heading {
+      font-size: clamp(2.65rem, 4.4vw, 4.35rem);
+      line-height: 1.06;
+      letter-spacing: -0.025em;
+    }
+
+    .section-heading {
+      font-size: clamp(2rem, 3.5vw, 3.25rem);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+    }
+
+    /* Anchor offset for sticky navbar */
+    section[id] {
+      scroll-margin-top: 6rem;
+    }
+
+    /* Focus visibility */
+    :focus-visible {
+      outline: 2px solid var(--focus-ring);
+      outline-offset: 3px;
+    }
+
+    /* Scroll reveal animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Restrained 3D perspective card support */
+    .tilt-card {
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.28s ease;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
+    /* Subtle grid background texture */
+    .bg-editorial-grid {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(217, 206, 189, 0.28) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(217, 206, 189, 0.28) 1px, transparent 1px);
+    }
+
+    .bg-dark-grid {
+      background-size: 44px 44px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 253, 249, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 253, 249, 0.04) 1px, transparent 1px);
+    }
+
+    /* Custom subtle scrollbars for authentic UI mockups */
+    .crm-scroll::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    .crm-scroll::-webkit-scrollbar-track {
+      background: #F2EEE6;
+    }
+    .crm-scroll::-webkit-scrollbar-thumb {
+      background: #D9CEBD;
+      border-radius: 9999px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="selection:bg-brand-teal selection:text-white">
+
+  <!-- =====================================================================
+       CONFIGURATION COMMENT:
+       The verified CRM host shown in the manager's brief is https://360dubai.ae/
+       Update CRM_CONFIG.loginUrl in the script block at the bottom if deploying
+       under a different tenant sub-route.
+       ===================================================================== -->
+
+  <!-- =====================================================================
+       SECTION 1 — NAVIGATION BAR
+       ===================================================================== -->
+  <header id="site-navbar" class="sticky top-0 z-50 w-full transition-all duration-300 bg-brand-forest text-ink-onDark border-b border-white/10">
+    <div class="max-w-[1300px] mx-auto px-5 sm:px-8 lg:px-12 h-20 sm:h-24 flex items-center justify-between gap-4">
+      
+      <!-- Left: Original Saga Luxury Properties Logo (Flush-Left & Responsively Scaled) -->
+      <a 
+        href="#top" 
+        class="inline-flex items-center focus:outline-none rounded-lg py-1 -ml-0.5 shrink-0" 
+        aria-label="Saga Luxury Properties — Top of page"
+      >
+        <!-- Responsive frame calibrated to saga.png so the emblem & wordmark are prominent on mobile, tablet, and 27"+ desktop monitors -->
+        <span class="brand-logo-frame w-[168px] sm:w-[200px] md:w-[215px] lg:w-[248px] xl:w-[268px]">
+          <img 
+            src="saga.png" 
+            alt="Saga Luxury Properties" 
+            onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='flex';"
+          />
+        </span>
+        <!-- Faithful Vector Fallback if saga.png is unavailable in a remote sandbox -->
+        <div class="hidden items-center gap-3.5 select-none" style="display: none;">
+          <svg class="h-11 sm:h-12 lg:h-14 w-auto shrink-0" viewBox="0 0 64 76" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Saga Luxury Properties Emblem">
+            <defs>
+              <linearGradient id="saga-silver-nav" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#F5F7FA"/>
+                <stop offset="45%" stop-color="#B8C2CC"/>
+                <stop offset="100%" stop-color="#7D8790"/>
+              </linearGradient>
+              <linearGradient id="saga-bronze-nav" x1="0" y1="0" x2="1" y2="0.8">
+                <stop offset="0%" stop-color="#6B4226"/>
+                <stop offset="35%" stop-color="#C89D66"/>
+                <stop offset="55%" stop-color="#F3D6A4"/>
+                <stop offset="80%" stop-color="#9A6836"/>
+                <stop offset="100%" stop-color="#59351C"/>
+              </linearGradient>
+            </defs>
+            <path d="M16 28L22 23V66H16V28Z" fill="url(#saga-silver-nav)"/>
+            <path d="M27 19L33 14V66H27V19Z" fill="url(#saga-silver-nav)"/>
+            <path d="M38 10L44 5V66H38V10Z" fill="url(#saga-silver-nav)"/>
+            <path d="M46 23C36 26 10 31 10 42C10 51 48 50 48 61C48 69 26 71 12 64L10 56C22 63 39 63 39 58C39 52 8 51 8 40C8 29 33 23 45 16L46 23Z" fill="url(#saga-bronze-nav)"/>
+          </svg>
+          <div class="flex flex-col leading-none tracking-[0.18em] text-left">
+            <span class="text-[15px] sm:text-[17px] lg:text-[19px] font-semibold text-[#E5E7EB] font-serif">SAGA LUXURY</span>
+            <span class="text-[11px] sm:text-[13px] lg:text-[14px] font-medium text-[#CBD5E1] tracking-[0.25em] mt-1.5 font-serif">PROPERTIES</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Center: Restrained Navigation Links (Exact Master Prompt Specification) -->
+      <nav class="hidden md:flex items-center gap-1 lg:gap-2" aria-label="Primary Navigation">
+        <a href="#overview" data-nav-section="overview" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-ink-onDark/80 hover:text-white hover:bg-white/5 transition-colors">Overview</a>
+        <a href="#features" data-nav-section="features" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-ink-onDark/80 hover:text-white hover:bg-white/5 transition-colors">Features</a>
+        <a href="#workflow" data-nav-section="workflow" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-ink-onDark/80 hover:text-white hover:bg-white/5 transition-colors">Workflow</a>
+        <a href="#benefits" data-nav-section="benefits" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-ink-onDark/80 hover:text-white hover:bg-white/5 transition-colors">Benefits</a>
+        <a href="#contact" data-nav-section="contact" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-ink-onDark/80 hover:text-white hover:bg-white/5 transition-colors">Contact</a>
+      </nav>
+
+      <!-- Right: Prominent Sign In CTA & Mobile Menu Trigger -->
+      <div class="flex items-center gap-3">
+        <a 
+          href="https://360dubai.ae/" 
+          data-crm-login
+          class="inline-flex items-center justify-center gap-2 bg-brand-teal hover:bg-brand-tealHover active:translate-y-[1px] text-ink-onDark font-semibold text-sm px-5 py-2.5 sm:px-6 sm:py-3 rounded-[10px] shadow-sm transition-all duration-200 border border-white/10"
+        >
+          <span>Sign In</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+
+        <!-- Mobile Menu Button -->
+        <button 
+          id="mobile-menu-btn"
+          type="button"
+          class="md:hidden inline-flex items-center justify-center w-11 h-11 rounded-[10px] text-ink-onDark/90 hover:text-white hover:bg-white/10 transition-colors"
+          aria-expanded="false"
+          aria-controls="mobile-menu-panel"
+          aria-label="Open navigation menu"
+        >
+          <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+          <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Accessible Mobile Navigation Drawer -->
+    <div 
+      id="mobile-menu-panel" 
+      class="hidden md:hidden bg-brand-deep border-t border-white/10 px-5 pt-4 pb-6 shadow-2xl"
+      role="region"
+      aria-label="Mobile Navigation"
+    >
+      <nav class="flex flex-col space-y-1">
+        <a href="#overview" class="mobile-nav-link px-3.5 py-3 rounded-lg text-base font-medium text-ink-onDark/90 hover:bg-white/10">Overview</a>
+        <a href="#features" class="mobile-nav-link px-3.5 py-3 rounded-lg text-base font-medium text-ink-onDark/90 hover:bg-white/10">Features</a>
+        <a href="#workflow" class="mobile-nav-link px-3.5 py-3 rounded-lg text-base font-medium text-ink-onDark/90 hover:bg-white/10">Workflow</a>
+        <a href="#benefits" class="mobile-nav-link px-3.5 py-3 rounded-lg text-base font-medium text-ink-onDark/90 hover:bg-white/10">Benefits</a>
+        <a href="#contact" class="mobile-nav-link px-3.5 py-3 rounded-lg text-base font-medium text-ink-onDark/90 hover:bg-white/10">Contact</a>
+      </nav>
+      <div class="mt-5 pt-4 border-t border-white/10 flex flex-col gap-3">
+        <a 
+          href="https://360dubai.ae/" 
+          data-crm-login
+          class="w-full inline-flex items-center justify-center gap-2 bg-brand-teal hover:bg-brand-tealHover text-ink-onDark font-medium text-base py-3 px-5 rounded-[10px] shadow-sm transition-all"
+        >
+          <span>Sign In to Your Workspace</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- =====================================================================
+         SECTION 2 — HERO SECTION
+         ===================================================================== -->
+    <section class="relative overflow-hidden pt-10 pb-20 md:pt-16 md:pb-28 lg:pt-20 lg:pb-32 bg-editorial-grid border-b border-border-subtle">
+      <!-- Subtle architectural ambient accent -->
+      <div class="pointer-events-none absolute top-0 right-0 w-[520px] h-[520px] rounded-full bg-brand-teal/5 blur-3xl -z-10"></div>
+
+      <div class="max-w-[1300px] xl:max-w-[1380px] mx-auto px-5 sm:px-8 lg:px-12">
+        <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,43%)_minmax(0,57%)] gap-12 lg:gap-12 xl:gap-16 items-center">
+          
+          <!-- Left Column: Messaging -->
+          <div class="flex flex-col items-start text-left z-10">
+            <div class="reveal is-visible inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-surface-primary border border-border-subtle shadow-sm mb-6">
+              <span class="w-2 h-2 rounded-full bg-brand-orange"></span>
+              <span class="text-xs font-semibold uppercase tracking-[0.14em] text-brand-orange">
+                REAL ESTATE MANAGEMENT PLATFORM
+              </span>
+            </div>
+
+            <h1 class="reveal is-visible hero-heading font-bold text-ink-primary mb-6" style="transition-delay: 80ms;">
+              <span class="block sm:whitespace-nowrap">One platform.</span>
+              <span class="block text-brand-forest sm:whitespace-nowrap">Multiple tenants.</span>
+            </h1>
+
+            <p class="reveal is-visible text-base sm:text-lg text-ink-secondary leading-relaxed mb-8 max-w-[540px]" style="transition-delay: 160ms;">
+              Saga Luxury Properties provides a centralized workspace for managing real-estate leads, property information, projects, inquiries, team activity, and business operations through one unified CRM interface.
+            </p>
+
+            <!-- Primary & Secondary CTAs -->
+            <div class="reveal is-visible flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto mb-7" style="transition-delay: 240ms;">
+              <a 
+                href="https://360dubai.ae/" 
+                data-crm-login
+                class="inline-flex items-center justify-center gap-2.5 bg-brand-teal hover:bg-brand-tealHover active:translate-y-[1px] text-ink-onDark font-semibold text-base px-6 py-3.5 rounded-[12px] shadow-sm hover:shadow-md transition-all duration-200"
+              >
+                <span>Sign In to Your Workspace</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </a>
+              <a 
+                href="#features" 
+                class="inline-flex items-center justify-center gap-2 bg-surface-primary hover:bg-surface-secondary text-ink-primary font-semibold text-base px-6 py-3.5 rounded-[12px] border border-border-strong shadow-sm transition-all duration-200"
+              >
+                <span>Explore Features</span>
+              </a>
+            </div>
+
+            <!-- Restrained Supporting Line Describing the Platform as a Central Real-Estate Workspace -->
+            <div class="reveal is-visible flex items-center gap-2.5 pt-3 border-t border-border-subtle text-xs text-ink-secondary" style="transition-delay: 320ms;">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-teal shrink-0"></span>
+              <span>Central real-estate CRM workspace for leads, properties, projects, attendance, and operational records.</span>
+            </div>
+          </div>
+
+          <!-- Right Column: Authentic Hero Interface Reconstruction -->
+          <div class="relative">
+            <!-- Offset dark forest-green backing frame -->
+            <div class="hidden sm:block absolute -inset-3 md:-inset-4 bg-brand-forest rounded-[20px] transform translate-x-3 translate-y-3 -z-10 shadow-xl"></div>
+
+            <!-- Main Browser / Application Frame (Faithful to image_22cd01.png) -->
+            <div class="reveal is-visible rounded-[16px] bg-surface-main border border-border-strong shadow-mockup overflow-hidden" style="transition-delay: 200ms;" role="img" aria-label="Saga Luxury Properties CRM Dashboard Preview showing all 16 sidebar modules, 251 total leads, lead sources chart, and live activity feed">
+              
+              <!-- Split Sidebar + Dashboard Content -->
+              <div class="grid grid-cols-12 bg-surface-main">
+                
+                <!-- Persistent Left Navigation Sidebar (Exact 16 Modules + Original Saga Logo from image_22cd01.png) -->
+                <div class="hidden sm:flex sm:col-span-3 bg-brand-forest text-ink-onDark p-2.5 flex-col justify-between border-r border-white/10 select-none">
+                  <div>
+                    <!-- Top Sidebar Brand Header using actual saga.png -->
+                    <div class="px-1.5 pt-1 pb-2.5 mb-2 border-b border-white/10 flex items-center">
+                      <span class="brand-logo-frame w-[118px]">
+                        <img 
+                          src="saga.png" 
+                          alt="Saga Luxury Properties"
+                          onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='flex';"
+                        />
+                      </span>
+                      <div class="hidden items-center gap-1.5" style="display: none;">
+                        <div class="w-4 h-4 rounded bg-white/10 flex items-center justify-center text-[9px] font-serif text-amber-300 font-bold">S</div>
+                        <div class="text-[8px] tracking-[0.14em] font-serif leading-tight text-white/90">
+                          SAGA LUXURY<br/><span class="text-[6.5px] text-white/60">PROPERTIES</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Complete 16-Item Navigation List matching image_22cd01.png -->
+                    <ul class="space-y-[1px] text-[10px] leading-tight">
+                      <li class="px-2 py-1.5 rounded-md bg-brand-teal/40 text-white font-medium flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-teal-300"></span> Dashboard
+                      </li>
+                      <li class="px-2 py-1 text-white/75 flex items-center gap-2">Leads</li>
+                      <li class="px-2 py-1 text-white/75 flex items-center gap-2">Data</li>
+                      <li class="px-2 py-1 text-white/75 flex items-center gap-2">Projects</li>
+                      <li class="px-2 py-1 text-white/75 flex items-center gap-2">Properties</li>
+                      <li class="px-2 py-1 text-white/75 flex items-center gap-2">Inquiries</li>
+                      <li class="px-2 py-1 text-white/75 flex items-center gap-2">Groups</li>
+                      <li class="px-2 py-1 text-white/75 flex items-center gap-2">Tasks</li>
+                      <li class="px-2 py-1 text-white/75 flex items-center gap-2">Team</li>
+                      <li class="px-2 py-1 text-white/75 flex items-center gap-2">Attendance</li>
+                      <li class="px-2 py-1 text-white/75 flex items-center gap-2">Invoices</li>
+                      <li class="px-2 py-1 text-white/75 flex items-center gap-2">Commissions</li>
+                      <li class="px-2 py-1 text-white/75 flex items-center gap-2">Reports</li>
+                      <li class="px-2 py-1 text-white/75 flex items-center gap-2">Chat</li>
+                      <li class="px-2 py-1 text-white/75 flex items-center gap-2">Approvals</li>
+                      <li class="px-2 py-1 text-white/75 flex items-center gap-2">Global Config</li>
+                    </ul>
+                  </div>
+                  <div class="pt-2 mt-1 border-t border-white/10 text-[10px] text-white/60 px-2 flex items-center gap-1.5">
+                    <span>⇥</span>
+                    <span>Log out</span>
+                  </div>
+                </div>
+
+                <!-- Right Column: Top Header + Dashboard Main Workspace -->
+                <div class="col-span-12 sm:col-span-9 flex flex-col">
+                  
+                  <!-- Top Application Bar (Matches image_22cd01.png) -->
+                  <div class="bg-surface-primary border-b border-border-subtle px-3.5 py-2 flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                      <span class="text-ink-muted text-xs">◧</span>
+                      <span class="text-xs font-semibold text-ink-primary">Dashboard</span>
+                    </div>
+                    <!-- Top-Right Utility Controls: Theme, Chat, Bell (75), Avatar -->
+                    <div class="flex items-center gap-2.5 text-[11px] text-ink-secondary">
+                      <span class="w-5 h-5 rounded-full bg-surface-secondary border border-border-subtle inline-flex items-center justify-center text-[10px]" title="Theme toggle">☾</span>
+                      <span class="w-5 h-5 rounded-full bg-surface-secondary border border-border-subtle inline-flex items-center justify-center text-[10px]" title="Chat">💬</span>
+                      <span class="relative inline-flex items-center justify-center w-5 h-5 rounded-full bg-surface-secondary border border-border-subtle text-[10px]" title="Notifications">
+                        🔔
+                        <span class="absolute -top-1 -right-1.5 px-1 rounded-full bg-brand-teal text-white text-[8px] font-bold leading-tight">75</span>
+                      </span>
+                      <span class="w-5 h-5 rounded-full bg-brand-forest text-white text-[9px] font-bold inline-flex items-center justify-center">U</span>
+                    </div>
+                  </div>
+
+                  <!-- Dashboard Body -->
+                  <div class="p-3 sm:p-3.5 space-y-2.5">
+                    
+                    <!-- Sub-bar: Timeframe, User Filter, Refresh, Just now -->
+                    <div class="flex flex-wrap items-center justify-between gap-2 text-[10px]">
+                      <div class="flex items-center gap-1.5">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-primary border border-border-subtle text-ink-primary font-medium">
+                          📅 All Time <span class="text-ink-muted ml-1">▾</span>
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-primary border border-border-subtle text-ink-primary font-medium">
+                          All users <span class="text-ink-muted ml-1">▾</span>
+                        </span>
+                        <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-surface-primary border border-border-subtle text-ink-secondary">
+                          ↻
+                        </span>
+                      </div>
+                      <span class="inline-flex items-center gap-1 text-ink-muted font-medium">
+                        🕒 Just now <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                      </span>
+                    </div>
+
+                    <!-- Top 5 Metric Cards (Exact Full Titles from image_22cd01.png) -->
+                    <div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
+                      <div class="bg-surface-primary p-2 rounded-lg border border-border-subtle">
+                        <div class="flex items-center justify-between text-[9.5px] text-ink-secondary mb-1 gap-1">
+                          <span class="leading-tight">New Lead</span>
+                          <span class="w-4 h-4 rounded-full bg-blue-50 text-blue-600 inline-flex items-center justify-center font-bold shrink-0">+</span>
+                        </div>
+                        <div class="text-sm font-bold text-ink-primary">0</div>
+                        <div class="text-[8.5px] text-ink-muted">0%</div>
+                      </div>
+                      <div class="bg-surface-primary p-2 rounded-lg border border-border-subtle">
+                        <div class="flex items-center justify-between text-[9.5px] text-ink-secondary mb-1 gap-1">
+                          <span class="leading-tight">Pending</span>
+                          <span class="w-4 h-4 rounded-full bg-amber-50 text-amber-600 inline-flex items-center justify-center text-[8px] shrink-0">●</span>
+                        </div>
+                        <div class="text-sm font-bold text-ink-primary">2</div>
+                        <div class="text-[8.5px] text-ink-muted">1%</div>
+                      </div>
+                      <div class="bg-surface-primary p-2 rounded-lg border border-border-subtle">
+                        <div class="flex items-center justify-between text-[9.5px] text-ink-secondary mb-1 gap-1">
+                          <span class="leading-tight">Callbacks</span>
+                          <span class="w-4 h-4 rounded-full bg-purple-50 text-purple-600 inline-flex items-center justify-center text-[8px] shrink-0">✆</span>
+                        </div>
+                        <div class="text-sm font-bold text-ink-primary">0</div>
+                        <div class="text-[8.5px] text-ink-muted">0%</div>
+                      </div>
+                      <div class="bg-surface-primary p-2 rounded-lg border border-border-subtle">
+                        <div class="flex items-center justify-between text-[9px] text-ink-secondary mb-1 gap-1">
+                          <span class="leading-tight">Meetings Scheduled</span>
+                          <span class="w-4 h-4 rounded-full bg-indigo-50 text-indigo-600 inline-flex items-center justify-center text-[8px] shrink-0">📅</span>
+                        </div>
+                        <div class="text-sm font-bold text-ink-primary">0</div>
+                        <div class="text-[8.5px] text-ink-muted">0%</div>
+                      </div>
+                      <div class="col-span-2 sm:col-span-1 bg-surface-primary p-2 rounded-lg border border-border-subtle">
+                        <div class="flex items-center justify-between text-[9px] text-ink-secondary mb-1 gap-1">
+                          <span class="leading-tight">Site Visits Scheduled</span>
+                          <span class="w-4 h-4 rounded-full bg-emerald-50 text-emerald-600 inline-flex items-center justify-center text-[8px] shrink-0">📍</span>
+                        </div>
+                        <div class="text-sm font-bold text-ink-primary">0</div>
+                        <div class="text-[8.5px] text-ink-muted">0%</div>
+                      </div>
+                    </div>
+
+                    <!-- Lead Overview Strip -->
+                    <div class="bg-surface-primary p-2.5 rounded-lg border border-border-subtle">
+                      <div class="flex items-center justify-between mb-2">
+                        <div>
+                          <div class="text-[8.5px] uppercase tracking-wider font-semibold text-ink-muted">LEAD OVERVIEW</div>
+                          <div class="text-xs font-bold text-ink-primary">251 <span class="text-[10px] font-normal text-ink-secondary">Total leads</span></div>
+                          <div class="text-[9px] text-brand-teal font-medium">All Time</div>
+                        </div>
+                        <span class="w-5 h-5 rounded-full bg-teal-50 text-brand-teal inline-flex items-center justify-center text-[10px]">⇅</span>
+                      </div>
+                      <div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5">
+                        <div class="p-1.5 rounded border border-border-subtle bg-surface-secondary/50">
+                          <div class="text-[9px] text-ink-secondary">Active</div>
+                          <div class="text-xs font-bold text-ink-primary">251</div>
+                        </div>
+                        <div class="p-1.5 rounded border border-border-subtle bg-surface-secondary/50">
+                          <div class="text-[9px] text-ink-secondary">Unassigned</div>
+                          <div class="text-xs font-bold text-ink-primary">1</div>
+                        </div>
+                        <div class="p-1.5 rounded border border-border-subtle bg-surface-secondary/50">
+                          <div class="text-[9px] text-ink-secondary">Booked</div>
+                          <div class="text-xs font-bold text-ink-primary">0</div>
+                        </div>
+                        <div class="p-1.5 rounded border border-border-subtle bg-surface-secondary/50">
+                          <div class="text-[9px] text-ink-secondary">Booking Cancel</div>
+                          <div class="text-xs font-bold text-ink-primary">0</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Bottom Split: Lead Sources Bar Chart + Activity Feed -->
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-2.5">
+                      <!-- Lead Sources (251 Total: Facebook 132, Instagram 115, Data 2, Google Sheets 2) -->
+                      <div class="md:col-span-7 bg-surface-primary p-2.5 rounded-lg border border-border-subtle flex flex-col justify-between">
+                        <div class="flex flex-wrap items-center justify-between gap-1 mb-2">
+                          <div class="flex items-center gap-1.5">
+                            <span class="text-[11px] font-bold text-ink-primary">Lead Sources</span>
+                            <span class="text-[8.5px] px-1.5 py-0.5 rounded bg-teal-50 text-brand-teal font-semibold">Facebook · 53%</span>
+                          </div>
+                          <div class="flex items-center gap-1.5">
+                            <span class="text-[9px] text-ink-muted">TOTAL <strong class="text-ink-primary">251</strong></span>
+                            <span class="inline-flex rounded border border-border-subtle p-0.5 text-[8px] bg-surface-secondary">
+                              <span class="px-1.5 py-0.2 rounded bg-teal-50 text-brand-teal font-semibold">Bar</span>
+                              <span class="px-1.5 py-0.2 text-ink-muted">Donut</span>
+                            </span>
+                          </div>
+                        </div>
+
+                        <div class="flex items-end gap-2 h-24 pt-2 border-b border-border-subtle">
+                          <!-- Y-axis scale matching image_22cd01.png (140, 105, 70, 35, 0) -->
+                          <div class="flex flex-col justify-between h-full text-[8px] text-ink-muted pb-1 pr-1 text-right select-none">
+                            <span>140</span>
+                            <span>105</span>
+                            <span>70</span>
+                            <span>35</span>
+                            <span>0</span>
+                          </div>
+                          <div class="flex-1 grid grid-cols-4 gap-2 items-end h-full px-1">
+                            <div class="flex flex-col items-center gap-0.5">
+                              <span class="text-[8.5px] font-bold text-ink-primary">132</span>
+                              <div class="w-6 sm:w-7 bg-blue-600 rounded-t h-16"></div>
+                            </div>
+                            <div class="flex flex-col items-center gap-0.5">
+                              <span class="text-[8.5px] font-bold text-ink-primary">115</span>
+                              <div class="w-6 sm:w-7 bg-emerald-500 rounded-t h-14"></div>
+                            </div>
+                            <div class="flex flex-col items-center gap-0.5">
+                              <span class="text-[8.5px] font-bold text-ink-primary">2</span>
+                              <div class="w-6 sm:w-7 bg-amber-500 rounded-t h-1"></div>
+                            </div>
+                            <div class="flex flex-col items-center gap-0.5">
+                              <span class="text-[8.5px] font-bold text-ink-primary">2</span>
+                              <div class="w-6 sm:w-7 bg-purple-500 rounded-t h-1"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="grid grid-cols-4 gap-1 text-center text-[8.5px] text-ink-secondary pt-1 pl-5">
+                          <span>Facebook</span>
+                          <span>Instagram</span>
+                          <span>Data</span>
+                          <span class="truncate">Google Sheets</span>
+                        </div>
+                      </div>
+
+                      <!-- Recent Activity Panel (Matches image_22cd01.png) -->
+                      <div class="md:col-span-5 bg-surface-primary p-2.5 rounded-lg border border-border-subtle flex flex-col justify-between">
+                        <div>
+                          <div class="flex items-center justify-between mb-1.5">
+                            <div>
+                              <div class="text-[11px] font-bold text-ink-primary">Activity</div>
+                              <div class="text-[8.5px] text-ink-muted">Recent team updates</div>
+                            </div>
+                            <span class="text-[8.5px] px-1.5 py-0.5 rounded bg-teal-50 text-brand-teal font-medium">Filters 1</span>
+                          </div>
+                          <div class="flex items-center justify-between text-[8px] text-ink-muted mb-2 pb-1 border-b border-border-subtle">
+                            <span class="px-1.5 py-0.5 rounded bg-surface-secondary border border-border-subtle text-ink-primary">All users ▾</span>
+                            <span>Last 30 Days</span>
+                          </div>
+                          <div class="space-y-1.5 text-[9.5px]">
+                            <div class="pb-1.5 border-b border-border-subtle flex items-start justify-between gap-1.5">
+                              <div>
+                                <div class="font-medium text-ink-primary">Team member <span class="font-normal text-ink-secondary">created a lead</span></div>
+                                <div class="flex items-center gap-1 mt-0.5">
+                                  <span class="px-1.5 py-0.2 bg-blue-50 text-blue-700 rounded text-[8.5px]">Leads</span>
+                                  <span class="text-brand-teal font-medium">Facebook</span>
+                                </div>
+                              </div>
+                              <span class="text-[8.5px] text-ink-muted shrink-0">1h ago</span>
+                            </div>
+                            <div class="flex items-start justify-between gap-1.5">
+                              <div>
+                                <div class="font-medium text-ink-primary">Team member <span class="font-normal text-ink-secondary">created a lead</span></div>
+                                <div class="flex items-center gap-1 mt-0.5">
+                                  <span class="px-1.5 py-0.2 bg-blue-50 text-blue-700 rounded text-[8.5px]">Leads</span>
+                                  <span class="text-brand-teal font-medium">Facebook</span>
+                                </div>
+                              </div>
+                              <span class="text-[8.5px] text-ink-muted shrink-0">4h ago</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="pt-1.5 mt-1.5 border-t border-border-subtle text-[8px] text-center text-ink-muted">
+                          Showing 20 of 115 activities • Auto-refreshes every 30s
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 3 — TRUST AND PRODUCT CONTEXT
+         ===================================================================== -->
+    <section id="overview" class="py-20 md:py-24 bg-surface-primary border-b border-border-subtle">
+      <div class="max-w-[1300px] mx-auto px-5 sm:px-8 lg:px-12">
+        
+        <div class="max-w-3xl mb-14 reveal">
+          <div class="text-xs font-semibold uppercase tracking-[0.14em] text-brand-orange mb-3">
+            OPERATIONAL CLARITY
+          </div>
+          <h2 class="section-heading font-bold text-ink-primary mb-4">
+            A clearer view of your real-estate operations.
+          </h2>
+          <p class="text-base sm:text-lg text-ink-secondary leading-relaxed">
+            Saga Luxury Properties brings key operational areas into a shared multi-tenant workspace—connecting lead tracking, property and project directories, inquiries, team attendance, and business records under one consistent navigation structure.
+          </p>
+        </div>
+
+        <!-- 4 Confirmed Capability Pillars -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- Pillar 1 -->
+          <div class="reveal bg-surface-secondary p-6 rounded-[14px] border border-border-subtle flex flex-col justify-between">
+            <div>
+              <div class="w-11 h-11 rounded-[10px] bg-brand-forest text-ink-onDark flex items-center justify-center mb-5 shadow-sm">
+                <svg class="w-5 h-5 text-teal-300" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
+                </svg>
+              </div>
+              <h3 class="text-lg font-bold text-ink-primary mb-2">Centralised operational workspace</h3>
+              <p class="text-sm text-ink-secondary leading-relaxed">
+                Access 16 dedicated operational sections from a persistent sidebar without switching between disconnected tools.
+              </p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-border-subtle text-xs font-medium text-brand-teal">
+              Unified navigation architecture
+            </div>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="reveal bg-surface-secondary p-6 rounded-[14px] border border-border-subtle flex flex-col justify-between" style="transition-delay: 80ms;">
+            <div>
+              <div class="w-11 h-11 rounded-[10px] bg-brand-forest text-ink-onDark flex items-center justify-center mb-5 shadow-sm">
+                <svg class="w-5 h-5 text-teal-300" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+                </svg>
+              </div>
+              <h3 class="text-lg font-bold text-ink-primary mb-2">Visibility into lead activity &amp; sources</h3>
+              <p class="text-sm text-ink-secondary leading-relaxed">
+                Monitor active, unassigned, and booked lead counts alongside source breakdowns across Facebook, Instagram, Data, and Google Sheets.
+              </p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-border-subtle text-xs font-medium text-brand-teal">
+              Bar, Donut &amp; Timeline views
+            </div>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="reveal bg-surface-secondary p-6 rounded-[14px] border border-border-subtle flex flex-col justify-between" style="transition-delay: 160ms;">
+            <div>
+              <div class="w-11 h-11 rounded-[10px] bg-brand-forest text-ink-onDark flex items-center justify-center mb-5 shadow-sm">
+                <svg class="w-5 h-5 text-teal-300" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" />
+                </svg>
+              </div>
+              <h3 class="text-lg font-bold text-ink-primary mb-2">Property &amp; project management areas</h3>
+              <p class="text-sm text-ink-secondary leading-relaxed">
+                Dedicated modules for Projects, Properties, Inquiries, and Data keep core real-estate records organized within the same platform.
+              </p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-border-subtle text-xs font-medium text-brand-teal">
+              Structured business directories
+            </div>
+          </div>
+
+          <!-- Pillar 4 -->
+          <div class="reveal bg-surface-secondary p-6 rounded-[14px] border border-border-subtle flex flex-col justify-between" style="transition-delay: 240ms;">
+            <div>
+              <div class="w-11 h-11 rounded-[10px] bg-brand-forest text-ink-onDark flex items-center justify-center mb-5 shadow-sm">
+                <svg class="w-5 h-5 text-teal-300" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                </svg>
+              </div>
+              <h3 class="text-lg font-bold text-ink-primary mb-2">Team &amp; operational record management</h3>
+              <p class="text-sm text-ink-secondary leading-relaxed">
+                Manage shift check-ins with GPS-location messaging and optional photo capture alongside Tasks, Team, Invoices, Commissions, and Reports.
+              </p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-border-subtle text-xs font-medium text-brand-teal">
+              Verified Attendance &amp; Shift Controls
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 4 — CORE FEATURE OVERVIEW (ALL 16 VERIFIED MODULES)
+         ===================================================================== -->
+    <section id="features" class="py-20 md:py-28 bg-surface-main border-b border-border-subtle">
+      <div class="max-w-[1300px] mx-auto px-5 sm:px-8 lg:px-12">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6 reveal">
+          <div class="max-w-2xl">
+            <div class="text-xs font-semibold uppercase tracking-[0.14em] text-brand-orange mb-3">
+              VERIFIED APPLICATION MODULES
+            </div>
+            <h2 class="section-heading font-bold text-ink-primary">
+              Everything organised in one workspace.
+            </h2>
+          </div>
+          <p class="text-sm sm:text-base text-ink-secondary max-w-md">
+            Every navigation area below corresponds directly to the existing Saga Luxury Properties application sidebar, helping real-estate teams work from a single system.
+          </p>
+        </div>
+
+        <!-- Tier 1: Flagship Inspected Modules (Bento Layout for Dashboard, Leads & Attendance) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-8">
+          
+          <!-- 1. Dashboard (Large Featured Card - 7 Cols) -->
+          <article class="reveal tilt-card lg:col-span-7 bg-surface-primary rounded-[16px] border border-border-strong p-6 sm:p-8 shadow-card hover:shadow-card-hover flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-4 mb-5">
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-brand-forest text-ink-onDark text-xs font-semibold">
+                  <span class="w-1.5 h-1.5 rounded-full bg-teal-300"></span>
+                  01 · Dashboard (Directly Verified)
+                </span>
+                <span class="text-xs font-medium text-ink-muted">Auto-refreshes every 30s</span>
+              </div>
+
+              <h3 class="text-xl sm:text-2xl font-bold text-ink-primary mb-3">
+                Central overview of lead activity &amp; operational metrics
+              </h3>
+              <p class="text-sm sm:text-base text-ink-secondary leading-relaxed mb-6">
+                Provides an immediate summary of visible lead counts, status categories, source analytics, recent team updates, appointments, and call metrics filterable by timeframe and user.
+              </p>
+            </div>
+
+            <!-- Authentic Dashboard Interface Elements Preview -->
+            <div class="bg-surface-secondary rounded-[12px] border border-border-subtle p-4 space-y-3">
+              <div class="text-[11px] font-semibold uppercase tracking-wider text-ink-muted">
+                Confirmed Dashboard Components
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs">
+                <div class="p-2.5 rounded-lg bg-surface-primary border border-border-subtle">
+                  <span class="block text-[10px] text-ink-muted mb-0.5">Top Summary Counters</span>
+                  <span class="font-semibold text-ink-primary">New Lead, Pending, Callbacks, Meetings Scheduled &amp; Site Visits Scheduled</span>
+                </div>
+                <div class="p-2.5 rounded-lg bg-surface-primary border border-border-subtle">
+                  <span class="block text-[10px] text-ink-muted mb-0.5">Lead Overview Categories</span>
+                  <span class="font-semibold text-ink-primary">Active (251), Unassigned (1), Booked (0) &amp; Booking Cancel (0)</span>
+                </div>
+                <div class="p-2.5 rounded-lg bg-surface-primary border border-border-subtle">
+                  <span class="block text-[10px] text-ink-muted mb-0.5">Source &amp; Trend Charts</span>
+                  <span class="font-semibold text-ink-primary">Bar/Donut Lead Sources &amp; Leads Received Area Chart</span>
+                </div>
+              </div>
+              <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-border-subtle text-xs text-ink-secondary">
+                <span>• <strong>Appointments Panel:</strong> Site Visits &amp; Meetings (Done, Upcoming, Overdue, Not Done, Revisits)</span>
+                <span>• <strong>Calls Panel:</strong> Dialed, Answered, Leads, Avg Talk</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2. Leads (Medium Featured Card - 5 Cols) -->
+          <article class="reveal tilt-card lg:col-span-5 bg-surface-primary rounded-[16px] border border-border-strong p-6 sm:p-8 shadow-card hover:shadow-card-hover flex flex-col justify-between" style="transition-delay: 80ms;">
+            <div>
+              <div class="flex items-center justify-between gap-4 mb-5">
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-brand-teal/10 text-brand-teal text-xs font-semibold">
+                  02 · Leads Module
+                </span>
+                <span class="text-xs font-medium text-ink-muted">Source Tracking</span>
+              </div>
+
+              <h3 class="text-xl sm:text-2xl font-bold text-ink-primary mb-3">
+                Dedicated lead-management workspace
+              </h3>
+              <p class="text-sm sm:text-base text-ink-secondary leading-relaxed mb-6">
+                Serves as the CRM’s dedicated area for working with lead records. The dashboard confirms that the system tracks lead creation activity across team members and categorizes incoming leads by source.
+              </p>
+            </div>
+
+            <!-- Verified Lead Sources Visual -->
+            <div class="bg-surface-secondary rounded-[12px] border border-border-subtle p-4">
+              <div class="flex items-center justify-between text-xs font-semibold text-ink-primary mb-3">
+                <span>Confirmed Tracked Lead Sources</span>
+                <span class="text-brand-teal">251 Total Leads</span>
+              </div>
+              <div class="space-y-2.5 text-xs">
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span class="font-medium text-ink-primary">Facebook</span>
+                    <span class="text-ink-secondary">132 leads (53%)</span>
+                  </div>
+                  <div class="w-full h-2 rounded-full bg-border-subtle overflow-hidden">
+                    <div class="bg-blue-600 h-full rounded-full" style="width: 53%;"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span class="font-medium text-ink-primary">Instagram</span>
+                    <span class="text-ink-secondary">115 leads (46%)</span>
+                  </div>
+                  <div class="w-full h-2 rounded-full bg-border-subtle overflow-hidden">
+                    <div class="bg-emerald-500 h-full rounded-full" style="width: 46%;"></div>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-2 pt-1">
+                  <div class="p-2 rounded bg-surface-primary border border-border-subtle flex items-center justify-between">
+                    <span class="text-ink-secondary">Data</span>
+                    <span class="font-bold text-ink-primary">2</span>
+                  </div>
+                  <div class="p-2 rounded bg-surface-primary border border-border-subtle flex items-center justify-between">
+                    <span class="text-ink-secondary">Google Sheets</span>
+                    <span class="font-bold text-ink-primary">2</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 10. Attendance (Full-Width Directly Inspected Feature Card - 12 Cols) -->
+          <article class="reveal tilt-card lg:col-span-12 bg-surface-primary rounded-[16px] border border-border-strong p-6 sm:p-8 shadow-card hover:shadow-card-hover">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div class="lg:col-span-6">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-brand-forest text-ink-onDark text-xs font-semibold mb-4">
+                  <span class="w-1.5 h-1.5 rounded-full bg-teal-300"></span>
+                  10 · Attendance (Directly Verified)
+                </div>
+                <h3 class="text-xl sm:text-2xl font-bold text-ink-primary mb-3">
+                  Shift check-in controls, optional photo input &amp; attendance records
+                </h3>
+                <p class="text-sm sm:text-base text-ink-secondary leading-relaxed mb-5">
+                  Provides a dedicated Check-in / Check-out panel with GPS-location messaging, optional camera capture or photo upload before starting a shift, and a searchable attendance table with date-range filters.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-ink-secondary">
+                  <div class="flex items-center gap-2 p-2.5 rounded-lg bg-surface-secondary border border-border-subtle">
+                    <span class="w-2 h-2 rounded-full bg-brand-teal shrink-0"></span>
+                    <span><strong>Shift Controls:</strong> Capture photo, Upload photo &amp; Start Shift buttons</span>
+                  </div>
+                  <div class="flex items-center gap-2 p-2.5 rounded-lg bg-surface-secondary border border-border-subtle">
+                    <span class="w-2 h-2 rounded-full bg-brand-teal shrink-0"></span>
+                    <span><strong>Quick Date Filters:</strong> Today, Yesterday, Last 7 days, Current Month</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mini Faithful Recreation of Attendance Screen -->
+              <div class="lg:col-span-6 bg-surface-secondary rounded-[12px] border border-border-subtle p-4">
+                <div class="grid grid-cols-1 sm:grid-cols-12 gap-3">
+                  <div class="sm:col-span-7 bg-surface-primary p-3 rounded-lg border border-border-subtle space-y-2">
+                    <div class="text-xs font-bold text-ink-primary">Check-in / Check-out</div>
+                    <div class="text-[10px] text-ink-secondary bg-surface-secondary p-2 rounded border border-border-subtle flex items-start gap-1.5">
+                      <span class="text-brand-teal font-bold">📍</span>
+                      <span>We will capture your current GPS location when you start your shift and keep it updated while you are online.</span>
+                    </div>
+                    <div class="w-full py-1.5 text-center text-[10px] font-medium text-ink-primary bg-teal-900/10 border border-brand-teal/40 rounded">
+                      📷 Capture photo
+                    </div>
+                    <div class="w-full py-1.5 text-center text-[10px] font-medium text-ink-primary bg-teal-900/10 border border-brand-teal/40 rounded">
+                      ↑ Upload photo
+                    </div>
+                    <div class="w-full py-1.5 text-center text-[10px] font-semibold text-white bg-brand-teal rounded">
+                      Start Shift
+                    </div>
+                  </div>
+                  <div class="sm:col-span-5 flex flex-col justify-between bg-surface-primary p-3 rounded-lg border border-border-subtle">
+                    <div class="flex items-center justify-between text-[10px] mb-1.5">
+                      <span class="font-semibold text-ink-primary">Check-in photo (optional)</span>
+                      <span class="text-[8.5px] text-ink-muted uppercase">OPTIONAL</span>
+                    </div>
+                    <div class="flex-1 min-h-[96px] rounded bg-[#2F2F2F] flex items-center justify-center p-2 text-center border border-dashed border-border-strong">
+                      <span class="text-[9px] text-white/60">Allow camera access to capture a fresh photo.</span>
+                    </div>
+                    <div class="text-[8.5px] text-ink-muted mt-1.5 leading-tight">
+                      You can capture a new photo or upload one from your device.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Tier 2: Remaining 13 Verified Sidebar Modules Grid -->
+        <div class="mb-4 flex items-center justify-between">
+          <h3 class="text-sm font-semibold uppercase tracking-wider text-ink-secondary">
+            Additional Workspace Navigation Modules
+          </h3>
+          <span class="text-xs text-ink-muted">Verified via application sidebar</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          
+          <!-- 3. Data -->
+          <div class="reveal bg-surface-primary p-5 rounded-[14px] border border-border-subtle hover:border-border-strong transition-all shadow-sm">
+            <div class="flex items-center justify-between mb-3">
+              <span class="w-9 h-9 rounded-lg bg-surface-secondary border border-border-subtle flex items-center justify-center text-brand-forest">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"/></svg>
+              </span>
+              <span class="text-[11px] font-medium text-ink-muted">03 · Module</span>
+            </div>
+            <h4 class="text-base font-bold text-ink-primary mb-1.5">Data</h4>
+            <p class="text-xs text-ink-secondary leading-relaxed">
+              Dedicated navigation area in the existing CRM sidebar, also referenced as a tracked source category on the dashboard.
+            </p>
+          </div>
+
+          <!-- 4. Projects -->
+          <div class="reveal bg-surface-primary p-5 rounded-[14px] border border-border-subtle hover:border-border-strong transition-all shadow-sm">
+            <div class="flex items-center justify-between mb-3">
+              <span class="w-9 h-9 rounded-lg bg-surface-secondary border border-border-subtle flex items-center justify-center text-brand-forest">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21"/></svg>
+              </span>
+              <span class="text-[11px] font-medium text-ink-muted">04 · Module</span>
+            </div>
+            <h4 class="text-base font-bold text-ink-primary mb-1.5">Projects</h4>
+            <p class="text-xs text-ink-secondary leading-relaxed">
+              Existing CRM module dedicated to project-related records within the shared real-estate workspace.
+            </p>
+          </div>
+
+          <!-- 5. Properties -->
+          <div class="reveal bg-surface-primary p-5 rounded-[14px] border border-border-subtle hover:border-border-strong transition-all shadow-sm">
+            <div class="flex items-center justify-between mb-3">
+              <span class="w-9 h-9 rounded-lg bg-surface-secondary border border-border-subtle flex items-center justify-center text-brand-forest">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205l3 1m1.5.5l-1.5-.5M6.75 7.364V3h-3v18m3-13.636l10.5-3.819"/></svg>
+              </span>
+              <span class="text-[11px] font-medium text-ink-muted">05 · Module</span>
+            </div>
+            <h4 class="text-base font-bold text-ink-primary mb-1.5">Properties</h4>
+            <p class="text-xs text-ink-secondary leading-relaxed">
+              Dedicated Properties section in the application sidebar for accessing property-related information alongside Projects and Inquiries.
+            </p>
+          </div>
+
+          <!-- 6. Inquiries -->
+          <div class="reveal bg-surface-primary p-5 rounded-[14px] border border-border-subtle hover:border-border-strong transition-all shadow-sm">
+            <div class="flex items-center justify-between mb-3">
+              <span class="w-9 h-9 rounded-lg bg-surface-secondary border border-border-subtle flex items-center justify-center text-brand-forest">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25z"/></svg>
+              </span>
+              <span class="text-[11px] font-medium text-ink-muted">06 · Module</span>
+            </div>
+            <h4 class="text-base font-bold text-ink-primary mb-1.5">Inquiries</h4>
+            <p class="text-xs text-ink-secondary leading-relaxed">
+              Dedicated navigation area for accessing real-estate inquiries within the primary CRM interface.
+            </p>
+          </div>
+
+          <!-- 7. Groups -->
+          <div class="reveal bg-surface-primary p-5 rounded-[14px] border border-border-subtle hover:border-border-strong transition-all shadow-sm">
+            <div class="flex items-center justify-between mb-3">
+              <span class="w-9 h-9 rounded-lg bg-surface-secondary border border-border-subtle flex items-center justify-center text-brand-forest">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
+              </span>
+              <span class="text-[11px] font-medium text-ink-muted">07 · Module</span>
+            </div>
+            <h4 class="text-base font-bold text-ink-primary mb-1.5">Groups</h4>
+            <p class="text-xs text-ink-secondary leading-relaxed">
+              Organisational navigation module available directly in the sidebar for accessing group-related structures in the workspace.
+            </p>
+          </div>
+
+          <!-- 8. Tasks -->
+          <div class="reveal bg-surface-primary p-5 rounded-[14px] border border-border-subtle hover:border-border-strong transition-all shadow-sm">
+            <div class="flex items-center justify-between mb-3">
+              <span class="w-9 h-9 rounded-lg bg-surface-secondary border border-border-subtle flex items-center justify-center text-brand-forest">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </span>
+              <span class="text-[11px] font-medium text-ink-muted">08 · Module</span>
+            </div>
+            <h4 class="text-base font-bold text-ink-primary mb-1.5">Tasks</h4>
+            <p class="text-xs text-ink-secondary leading-relaxed">
+              Dedicated Tasks section located within the primary sidebar for accessing operational task items.
+            </p>
+          </div>
+
+          <!-- 9. Team -->
+          <div class="reveal bg-surface-primary p-5 rounded-[14px] border border-border-subtle hover:border-border-strong transition-all shadow-sm">
+            <div class="flex items-center justify-between mb-3">
+              <span class="w-9 h-9 rounded-lg bg-surface-secondary border border-border-subtle flex items-center justify-center text-brand-forest">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg>
+              </span>
+              <span class="text-[11px] font-medium text-ink-muted">09 · Module</span>
+            </div>
+            <h4 class="text-base font-bold text-ink-primary mb-1.5">Team</h4>
+            <p class="text-xs text-ink-secondary leading-relaxed">
+              Dedicated Team navigation area providing access to team-related functionality within the CRM.
+            </p>
+          </div>
+
+          <!-- 11. Invoices -->
+          <div class="reveal bg-surface-primary p-5 rounded-[14px] border border-border-subtle hover:border-border-strong transition-all shadow-sm">
+            <div class="flex items-center justify-between mb-3">
+              <span class="w-9 h-9 rounded-lg bg-surface-secondary border border-border-subtle flex items-center justify-center text-brand-forest">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>
+              </span>
+              <span class="text-[11px] font-medium text-ink-muted">11 · Module</span>
+            </div>
+            <h4 class="text-base font-bold text-ink-primary mb-1.5">Invoices</h4>
+            <p class="text-xs text-ink-secondary leading-relaxed">
+              Existing navigation module accessible from the main sidebar for invoice-related records.
+            </p>
+          </div>
+
+          <!-- 12. Commissions -->
+          <div class="reveal bg-surface-primary p-5 rounded-[14px] border border-border-subtle hover:border-border-strong transition-all shadow-sm">
+            <div class="flex items-center justify-between mb-3">
+              <span class="w-9 h-9 rounded-lg bg-surface-secondary border border-border-subtle flex items-center justify-center text-brand-forest">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 14.25l6-6m4.5-3.493V21.75l-3.75-1.5-3.75 1.5-3.75-1.5-3.75 1.5V4.757c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0c1.1.128 1.907 1.077 1.907 2.185zM9.75 9h.008v.008H9.75V9zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm4.125 4.5h.008v.008h-.008V13.5zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg>
+              </span>
+              <span class="text-[11px] font-medium text-ink-muted">12 · Module</span>
+            </div>
+            <h4 class="text-base font-bold text-ink-primary mb-1.5">Commissions</h4>
+            <p class="text-xs text-ink-secondary leading-relaxed">
+              Existing navigation area for accessing commission records alongside Invoices and Reports.
+            </p>
+          </div>
+
+          <!-- 13. Reports -->
+          <div class="reveal bg-surface-primary p-5 rounded-[14px] border border-border-subtle hover:border-border-strong transition-all shadow-sm">
+            <div class="flex items-center justify-between mb-3">
+              <span class="w-9 h-9 rounded-lg bg-surface-secondary border border-border-subtle flex items-center justify-center text-brand-forest">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z"/></svg>
+              </span>
+              <span class="text-[11px] font-medium text-ink-muted">13 · Module</span>
+            </div>
+            <h4 class="text-base font-bold text-ink-primary mb-1.5">Reports</h4>
+            <p class="text-xs text-ink-secondary leading-relaxed">
+              Separate Reports module in the primary navigation for accessing operational reporting within the CRM.
+            </p>
+          </div>
+
+          <!-- 14. Chat -->
+          <div class="reveal bg-surface-primary p-5 rounded-[14px] border border-border-subtle hover:border-border-strong transition-all shadow-sm">
+            <div class="flex items-center justify-between mb-3">
+              <span class="w-9 h-9 rounded-lg bg-surface-secondary border border-border-subtle flex items-center justify-center text-brand-forest">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"/></svg>
+              </span>
+              <span class="text-[11px] font-medium text-ink-muted">14 · Module</span>
+            </div>
+            <h4 class="text-base font-bold text-ink-primary mb-1.5">Chat</h4>
+            <p class="text-xs text-ink-secondary leading-relaxed">
+              Existing Chat module accessible from both the left navigation sidebar and top utility bar.
+            </p>
+          </div>
+
+          <!-- 15. Approvals -->
+          <div class="reveal bg-surface-primary p-5 rounded-[14px] border border-border-subtle hover:border-border-strong transition-all shadow-sm">
+            <div class="flex items-center justify-between mb-3">
+              <span class="w-9 h-9 rounded-lg bg-surface-secondary border border-border-subtle flex items-center justify-center text-brand-forest">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+              </span>
+              <span class="text-[11px] font-medium text-ink-muted">15 · Module</span>
+            </div>
+            <h4 class="text-base font-bold text-ink-primary mb-1.5">Approvals</h4>
+            <p class="text-xs text-ink-secondary leading-relaxed">
+              Existing Approvals navigation module located in the primary sidebar.
+            </p>
+          </div>
+
+          <!-- 16. Global Config -->
+          <div class="reveal bg-surface-primary p-5 rounded-[14px] border border-border-subtle hover:border-border-strong transition-all shadow-sm sm:col-span-2 lg:col-span-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div class="flex items-start sm:items-center gap-4">
+              <span class="w-10 h-10 rounded-lg bg-surface-secondary border border-border-subtle flex items-center justify-center text-brand-forest shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg>
+              </span>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h4 class="text-base font-bold text-ink-primary">Global Config</h4>
+                  <span class="text-[11px] font-medium text-ink-muted">· 16 · Module</span>
+                </div>
+                <p class="text-xs text-ink-secondary leading-relaxed mt-0.5">
+                  Configuration-related navigation area located in the primary sidebar.
+                </p>
+              </div>
+            </div>
+            <span class="text-xs font-medium text-brand-teal shrink-0">Configuration Area</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 5 — HOW THE WORKSPACE FITS TOGETHER (WORKFLOW)
+         ===================================================================== -->
+    <section id="workflow" class="py-20 md:py-28 bg-surface-primary border-b border-border-subtle">
+      <div class="max-w-[1300px] mx-auto px-5 sm:px-8 lg:px-12">
+        
+        <div class="max-w-3xl mb-14 reveal">
+          <div class="text-xs font-semibold uppercase tracking-[0.14em] text-brand-orange mb-3">
+            CONCEPTUAL WORKSPACE NAVIGATION
+          </div>
+          <h2 class="section-heading font-bold text-ink-primary mb-4">
+            From lead activity to operational visibility.
+          </h2>
+          <p class="text-base sm:text-lg text-ink-secondary leading-relaxed">
+            A conceptual guide to how the visible areas of the Saga Luxury Properties interface relate to one another inside the shared workspace.
+          </p>
+        </div>
+
+        <!-- 6-Step Horizontal Desktop Process / Vertical Mobile Timeline -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative">
+          
+          <!-- Step 01 -->
+          <div class="reveal bg-surface-secondary p-6 rounded-[14px] border border-border-subtle relative flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-bold uppercase tracking-widest px-2.5 py-1 rounded bg-brand-forest text-ink-onDark">
+                  01
+                </span>
+                <svg class="w-5 h-5 text-brand-teal hidden lg:block" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/></svg>
+              </div>
+              <h3 class="text-lg font-bold text-ink-primary mb-2">Review the dashboard</h3>
+              <p class="text-sm text-ink-secondary leading-relaxed">
+                Start with the dashboard to review the available lead summaries, activity feed, source chart, and appointment or call metrics.
+              </p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-border-subtle text-xs text-ink-muted">
+              Visible Area: <strong class="text-ink-primary">Dashboard</strong>
+            </div>
+          </div>
+
+          <!-- Step 02 -->
+          <div class="reveal bg-surface-secondary p-6 rounded-[14px] border border-border-subtle relative flex flex-col justify-between" style="transition-delay: 70ms;">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-bold uppercase tracking-widest px-2.5 py-1 rounded bg-brand-forest text-ink-onDark">
+                  02
+                </span>
+                <svg class="w-5 h-5 text-brand-teal hidden lg:block" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/></svg>
+              </div>
+              <h3 class="text-lg font-bold text-ink-primary mb-2">Work with lead information</h3>
+              <p class="text-sm text-ink-secondary leading-relaxed">
+                Use the Leads area and the visible lead-source information to understand where lead activity is represented in the CRM.
+              </p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-border-subtle text-xs text-ink-muted">
+              Visible Area: <strong class="text-ink-primary">Leads</strong>
+            </div>
+          </div>
+
+          <!-- Step 03 -->
+          <div class="reveal bg-surface-secondary p-6 rounded-[14px] border border-border-subtle relative flex flex-col justify-between" style="transition-delay: 140ms;">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-bold uppercase tracking-widest px-2.5 py-1 rounded bg-brand-forest text-ink-onDark">
+                  03
+                </span>
+                <svg class="w-5 h-5 text-brand-teal hidden lg:block" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3"/></svg>
+              </div>
+              <h3 class="text-lg font-bold text-ink-primary mb-2">Access relevant business areas</h3>
+              <p class="text-sm text-ink-secondary leading-relaxed">
+                Navigate to Projects, Properties, Inquiries, and Data as needed through their dedicated sections in the application sidebar.
+              </p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-border-subtle text-xs text-ink-muted">
+              Visible Areas: <strong class="text-ink-primary">Projects · Properties · Inquiries · Data</strong>
+            </div>
+          </div>
+
+          <!-- Step 04 -->
+          <div class="reveal bg-surface-secondary p-6 rounded-[14px] border border-border-subtle relative flex flex-col justify-between" style="transition-delay: 210ms;">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-bold uppercase tracking-widest px-2.5 py-1 rounded bg-brand-forest text-ink-onDark">
+                  04
+                </span>
+                <svg class="w-5 h-5 text-brand-teal hidden lg:block" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/></svg>
+              </div>
+              <h3 class="text-lg font-bold text-ink-primary mb-2">Coordinate team activity</h3>
+              <p class="text-sm text-ink-secondary leading-relaxed">
+                Use the existing Team, Groups, and Tasks navigation areas where relevant within the shared CRM interface.
+              </p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-border-subtle text-xs text-ink-muted">
+              Visible Areas: <strong class="text-ink-primary">Team · Groups · Tasks</strong>
+            </div>
+          </div>
+
+          <!-- Step 05 -->
+          <div class="reveal bg-surface-secondary p-6 rounded-[14px] border border-border-subtle relative flex flex-col justify-between" style="transition-delay: 280ms;">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-bold uppercase tracking-widest px-2.5 py-1 rounded bg-brand-forest text-ink-onDark">
+                  05
+                </span>
+                <svg class="w-5 h-5 text-brand-teal hidden lg:block" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/></svg>
+              </div>
+              <h3 class="text-lg font-bold text-ink-primary mb-2">Review operational records</h3>
+              <p class="text-sm text-ink-secondary leading-relaxed">
+                Access Attendance for shift-start controls and date-filtered attendance tables, as well as Invoices, Commissions, and Reports.
+              </p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-border-subtle text-xs text-ink-muted">
+              Visible Areas: <strong class="text-ink-primary">Attendance · Invoices · Commissions · Reports</strong>
+            </div>
+          </div>
+
+          <!-- Step 06 -->
+          <div class="reveal bg-surface-secondary p-6 rounded-[14px] border border-border-subtle relative flex flex-col justify-between" style="transition-delay: 350ms;">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-bold uppercase tracking-widest px-2.5 py-1 rounded bg-brand-teal text-ink-onDark">
+                  06
+                </span>
+                <span class="text-xs font-medium text-brand-teal">Shared Navigation</span>
+              </div>
+              <h3 class="text-lg font-bold text-ink-primary mb-2">Use the wider workspace</h3>
+              <p class="text-sm text-ink-secondary leading-relaxed">
+                The Chat, Approvals, and Global Config modules are also present in the application navigation as part of the unified sidebar.
+              </p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-border-subtle text-xs text-ink-muted">
+              Visible Areas: <strong class="text-ink-primary">Chat · Approvals · Global Config</strong>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 6 — PRODUCT VISUAL SHOWCASE (3 ALTERNATING BLOCKS)
+         ===================================================================== -->
+    <section id="showcase" class="py-20 md:py-28 bg-surface-main border-b border-border-subtle space-y-24 md:space-y-32">
+      
+      <!-- SHOWCASE A: Dashboard Overview & Analytics -->
+      <div class="max-w-[1300px] mx-auto px-5 sm:px-8 lg:px-12">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          
+          <!-- Left Text -->
+          <div class="lg:col-span-5 reveal">
+            <div class="text-xs font-semibold uppercase tracking-[0.14em] text-brand-orange mb-3">
+              SHOWCASE 01 · DASHBOARD OVERVIEW
+            </div>
+            <h2 class="section-heading font-bold text-ink-primary mb-4">
+              See your lead activity at a glance.
+            </h2>
+            <p class="text-base text-ink-secondary leading-relaxed mb-6">
+              The Saga Luxury Properties dashboard consolidates visible lead summaries, source distribution, monthly reception curves, appointment statuses, and call activity into one scrollable view.
+            </p>
+            <ul class="space-y-3 text-sm text-ink-secondary mb-8">
+              <li class="flex items-start gap-2.5">
+                <span class="w-5 h-5 rounded-full bg-brand-teal/15 text-brand-teal flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">✓</span>
+                <span><strong>Leads Received Chart:</strong> Displays monthly intake (e.g., <em>This Month · 240 leads</em>) plotted across Facebook and Instagram curves from Oct 19 to Oct 23.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="w-5 h-5 rounded-full bg-brand-teal/15 text-brand-teal flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">✓</span>
+                <span><strong>Appointments Panel:</strong> Switch between Site Visits and Meetings with status counters for Done, Upcoming, Overdue, Not Done, and Revisits.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="w-5 h-5 rounded-full bg-brand-teal/15 text-brand-teal flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">✓</span>
+                <span><strong>Calls Panel:</strong> Displays Last 30 Days counters for Dialed, Answered, Leads, and Avg Talk.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Right Authentic Interface Reconstruction (Lower Dashboard Screen image_22cd21.png) -->
+          <div class="lg:col-span-7 reveal" style="transition-delay: 100ms;">
+            <div class="rounded-[16px] bg-surface-primary border border-border-strong shadow-mockup overflow-hidden p-4 sm:p-6 space-y-4">
+              
+              <!-- Leads Received Area Chart Panel -->
+              <div class="bg-surface-secondary/60 rounded-xl border border-border-subtle p-4">
+                <div class="flex items-center justify-between mb-3">
+                  <div>
+                    <div class="text-sm font-bold text-ink-primary">Leads Received</div>
+                    <div class="text-xs text-brand-teal font-medium">This Month · 240 leads</div>
+                  </div>
+                  <span class="w-7 h-7 rounded-full bg-teal-50 text-brand-teal inline-flex items-center justify-center text-xs">⇅</span>
+                </div>
+                <!-- Accurate SVG representation of Oct 19 - Oct 23 curve from image_22cd21.png -->
+                <div class="relative h-36 w-full pt-2">
+                  <svg class="w-full h-full overflow-visible" viewBox="0 0 500 120" preserveAspectRatio="none" role="img" aria-label="Leads Received chart showing 220 peak on Oct 19 tapering through Oct 23">
+                    <defs>
+                      <linearGradient id="igGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#10B981" stop-opacity="0.32"/>
+                        <stop offset="100%" stop-color="#10B981" stop-opacity="0.0"/>
+                      </linearGradient>
+                      <linearGradient id="fbGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#2563EB" stop-opacity="0.28"/>
+                        <stop offset="100%" stop-color="#2563EB" stop-opacity="0.0"/>
+                      </linearGradient>
+                    </defs>
+                    <!-- Horizontal dashed grid lines (220, 165, 110, 55, 0) -->
+                    <line x1="30" y1="10" x2="490" y2="10" stroke="#E6DED1" stroke-dasharray="3 3" stroke-width="1"/>
+                    <line x1="30" y1="35" x2="490" y2="35" stroke="#E6DED1" stroke-dasharray="3 3" stroke-width="1"/>
+                    <line x1="30" y1="60" x2="490" y2="60" stroke="#E6DED1" stroke-dasharray="3 3" stroke-width="1"/>
+                    <line x1="30" y1="85" x2="490" y2="85" stroke="#E6DED1" stroke-dasharray="3 3" stroke-width="1"/>
+                    <line x1="30" y1="110" x2="490" y2="110" stroke="#D9CEBD" stroke-width="1"/>
+                    <!-- Y-axis labels -->
+                    <text x="0" y="13" fill="#888176" font-size="9">220</text>
+                    <text x="0" y="38" fill="#888176" font-size="9">165</text>
+                    <text x="2" y="63" fill="#888176" font-size="9">110</text>
+                    <text x="6" y="88" fill="#888176" font-size="9">55</text>
+                    <text x="12" y="112" fill="#888176" font-size="9">0</text>
+                    <!-- Instagram Green Curve -->
+                    <path d="M30 12 C 75 65, 110 106, 145 107 C 210 108, 350 105, 490 107 L 490 110 L 30 110 Z" fill="url(#igGrad)"/>
+                    <path d="M30 12 C 75 65, 110 106, 145 107 C 210 108, 350 105, 490 107" fill="none" stroke="#10B981" stroke-width="2"/>
+                    <!-- Facebook Blue Curve -->
+                    <path d="M30 58 C 75 85, 110 108, 145 109 C 210 109, 350 107, 490 109 L 490 110 L 30 110 Z" fill="url(#fbGrad)"/>
+                    <path d="M30 58 C 75 85, 110 108, 145 109 C 210 109, 350 107, 490 109" fill="none" stroke="#2563EB" stroke-width="2"/>
+                  </svg>
+                </div>
+                <div class="flex justify-between text-[10px] text-ink-muted pl-6 pr-2 pt-1">
+                  <span>Oct 19</span>
+                  <span>Oct 20</span>
+                  <span>Oct 21</span>
+                  <span>Oct 22</span>
+                  <span>Oct 23</span>
+                </div>
+                <div class="flex items-center justify-center gap-4 text-[11px] text-ink-secondary mt-2">
+                  <span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-blue-600"></span> Facebook</span>
+                  <span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> Instagram</span>
+                </div>
+              </div>
+
+              <!-- Appointments & Calls Row -->
+              <div class="grid grid-cols-1 sm:grid-cols-12 gap-3">
+                <!-- Appointments Card -->
+                <div class="sm:col-span-7 bg-surface-secondary/60 rounded-xl border border-border-subtle p-3.5 flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center justify-between mb-1">
+                      <span class="text-[10px] uppercase tracking-wider text-ink-muted font-semibold">APPOINTMENTS</span>
+                      <span class="text-[10px] px-2 py-0.5 rounded-full bg-surface-primary border border-border-subtle text-ink-secondary">1 total</span>
+                    </div>
+                    <div class="text-sm font-bold text-ink-primary">Site visits</div>
+                    <div class="text-[10px] text-brand-teal mb-2.5">Last 30 Days</div>
+                    <!-- Segmented Toggle -->
+                    <div class="grid grid-cols-2 gap-1 p-1 rounded-lg bg-surface-main border border-border-subtle text-[11px] mb-3">
+                      <div class="py-1 px-2 rounded bg-brand-teal text-white font-medium text-center">📍 Site Visits</div>
+                      <div class="py-1 px-2 rounded text-ink-secondary text-center">👥 Meetings</div>
+                    </div>
+                    <div class="py-4 text-center text-[11px] text-ink-muted">
+                      No appointment activity in this period
+                    </div>
+                  </div>
+                  <div class="grid grid-cols-5 gap-1 text-[9px]">
+                    <div class="p-1.5 rounded bg-surface-primary border border-border-subtle">
+                      <div class="text-ink-muted truncate">DONE</div>
+                      <div class="font-bold text-emerald-600 text-xs">0</div>
+                    </div>
+                    <div class="p-1.5 rounded bg-surface-primary border border-border-subtle">
+                      <div class="text-ink-muted truncate">UPCOMING</div>
+                      <div class="font-bold text-blue-600 text-xs">0</div>
+                    </div>
+                    <div class="p-1.5 rounded bg-surface-primary border border-border-subtle">
+                      <div class="text-ink-muted truncate">OVERDUE</div>
+                      <div class="font-bold text-red-600 text-xs">0</div>
+                    </div>
+                    <div class="p-1.5 rounded bg-surface-primary border border-border-subtle">
+                      <div class="text-ink-muted truncate">NOT DONE</div>
+                      <div class="font-bold text-amber-600 text-xs">1</div>
+                    </div>
+                    <div class="p-1.5 rounded bg-surface-primary border border-border-subtle">
+                      <div class="text-ink-muted truncate">REVISITS</div>
+                      <div class="font-bold text-purple-600 text-xs">0</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Calls Card -->
+                <div class="sm:col-span-5 bg-surface-secondary/60 rounded-xl border border-border-subtle p-3.5 flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center justify-between">
+                      <div class="text-sm font-bold text-ink-primary">✆ Calls</div>
+                      <span class="w-6 h-6 rounded-full bg-teal-50 text-brand-teal inline-flex items-center justify-center text-[10px]">⇅</span>
+                    </div>
+                    <div class="text-[10px] text-brand-teal mb-3">Last 30 Days</div>
+                    <div class="grid grid-cols-2 gap-2 text-[10px]">
+                      <div class="p-2 rounded bg-surface-primary border border-border-subtle">
+                        <div class="text-ink-muted">DIALED</div>
+                        <div class="text-xs font-bold text-blue-600">0</div>
+                      </div>
+                      <div class="p-2 rounded bg-surface-primary border border-border-subtle">
+                        <div class="text-ink-muted">ANSWERED</div>
+                        <div class="text-xs font-bold text-emerald-600">0</div>
+                      </div>
+                      <div class="p-2 rounded bg-surface-primary border border-border-subtle">
+                        <div class="text-ink-muted">LEADS</div>
+                        <div class="text-xs font-bold text-purple-600">0</div>
+                      </div>
+                      <div class="p-2 rounded bg-surface-primary border border-border-subtle">
+                        <div class="text-ink-muted">AVG TALK</div>
+                        <div class="text-xs font-bold text-ink-primary">—</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-[11px] text-center text-ink-muted py-5">
+                    No call activity in this period
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SHOWCASE B: Attendance & Team Operations (Reversed Layout) -->
+      <div class="max-w-[1300px] mx-auto px-5 sm:px-8 lg:px-12">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          
+          <!-- Left Authentic Attendance Interface Reconstruction (image_22cd3c.png) -->
+          <div class="lg:col-span-7 order-2 lg:order-1 reveal">
+            <div class="rounded-[16px] bg-surface-primary border border-border-strong shadow-mockup overflow-hidden p-4 sm:p-6 space-y-4">
+              
+              <!-- Top Check-in / Check-out Panel from image_22cd3c.png -->
+              <div class="bg-surface-secondary/50 rounded-xl border border-border-subtle p-3.5">
+                <div class="text-xs font-bold text-ink-primary mb-2.5">Check-in / Check-out</div>
+                <div class="grid grid-cols-1 sm:grid-cols-12 gap-3">
+                  <div class="sm:col-span-7 bg-surface-primary p-2.5 rounded-lg border border-border-subtle space-y-1.5">
+                    <div class="text-[9.5px] text-ink-secondary flex items-start gap-1.5 pb-1">
+                      <span class="text-brand-teal">📍</span>
+                      <span>We will capture your current GPS location when you start your shift and keep it updated while you are online.</span>
+                    </div>
+                    <div class="w-full py-1.5 text-center text-[10px] font-medium text-ink-primary bg-teal-900/10 border border-brand-teal/40 rounded">
+                      📷 Capture photo
+                    </div>
+                    <div class="w-full py-1.5 text-center text-[10px] font-medium text-ink-primary bg-teal-900/10 border border-brand-teal/40 rounded">
+                      ↑ Upload photo
+                    </div>
+                    <div class="w-full py-1.5 text-center text-[10px] font-semibold text-white bg-brand-teal rounded">
+                      Start Shift
+                    </div>
+                  </div>
+                  <div class="sm:col-span-5 flex flex-col justify-between">
+                    <div class="flex items-center justify-between text-[9.5px] mb-1">
+                      <span class="font-semibold text-ink-primary">Check-in photo (optional)</span>
+                      <span class="text-[8px] text-ink-muted uppercase">OPTIONAL</span>
+                    </div>
+                    <div class="flex-1 min-h-[88px] rounded bg-[#2F2F2F] flex items-center justify-center p-2 text-center border border-dashed border-border-strong">
+                      <span class="text-[9px] text-white/60">Allow camera access to capture a fresh photo.</span>
+                    </div>
+                    <div class="text-[8px] text-ink-muted mt-1 leading-tight">
+                      You can capture a new photo or upload one from your device. This is optional for starting your shift.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom Attendance Table Panel from image_22cd3c.png -->
+              <div class="space-y-3 pt-1">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-xs font-bold text-ink-primary">Attendance</span>
+                    <span class="text-[10px] text-ink-muted">(4 users)</span>
+                  </div>
+                  <div class="flex flex-wrap items-center gap-1 text-[10px]">
+                    <span class="px-2.5 py-0.5 rounded-full border border-border-subtle text-ink-secondary bg-surface-secondary">Today</span>
+                    <span class="px-2.5 py-0.5 rounded-full border border-border-subtle text-ink-secondary bg-surface-secondary">Yesterday</span>
+                    <span class="px-2.5 py-0.5 rounded-full bg-brand-teal text-white font-medium">Last 7 days</span>
+                    <span class="px-2.5 py-0.5 rounded-full border border-border-subtle text-ink-secondary bg-surface-secondary">Current Month</span>
+                  </div>
+                </div>
+
+                <!-- Search & Date Range Inputs -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px]">
+                  <div class="px-3 py-1.5 rounded-lg bg-surface-secondary border border-border-subtle text-ink-muted">
+                    Search user...
+                  </div>
+                  <div class="px-3 py-1.5 rounded-lg bg-surface-primary border border-border-subtle text-ink-primary font-medium flex items-center gap-2">
+                    <span>📅</span>
+                    <span>Oct 19, 2026 – Oct 25, 2026</span>
+                  </div>
+                </div>
+
+                <!-- Attendance 7-Day Table (All 7 Days OCT 19 Mon – OCT 25 Sun, Privacy-Safe User Rows) -->
+                <div class="overflow-x-auto crm-scroll rounded-lg border border-border-subtle">
+                  <table class="w-full text-left border-collapse text-[10px]">
+                    <thead>
+                      <tr class="bg-surface-secondary text-ink-secondary border-b border-border-subtle">
+                        <th class="py-2 px-2.5 font-semibold">USER NAME</th>
+                        <th class="py-2 px-2 font-semibold text-center">NO.OF DAYS</th>
+                        <th class="py-2 px-1.5 font-semibold text-center">OCT 19<span class="block text-[8px] font-normal text-ink-muted">Mon</span></th>
+                        <th class="py-2 px-1.5 font-semibold text-center">OCT 20<span class="block text-[8px] font-normal text-ink-muted">Tue</span></th>
+                        <th class="py-2 px-1.5 font-semibold text-center">OCT 21<span class="block text-[8px] font-normal text-ink-muted">Wed</span></th>
+                        <th class="py-2 px-1.5 font-semibold text-center">OCT 22<span class="block text-[8px] font-normal text-ink-muted">Thu</span></th>
+                        <th class="py-2 px-1.5 font-semibold text-center">OCT 23<span class="block text-[8px] font-normal text-ink-muted">Fri</span></th>
+                        <th class="py-2 px-1.5 font-semibold text-center">OCT 24<span class="block text-[8px] font-normal text-ink-muted">Sat</span></th>
+                        <th class="py-2 px-1.5 font-semibold text-center">OCT 25<span class="block text-[8px] font-normal text-ink-muted">Sun</span></th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-border-subtle bg-surface-primary">
+                      <tr>
+                        <td class="py-2 px-2.5">
+                          <div class="flex items-center gap-2">
+                            <span class="w-6 h-6 rounded-full bg-brand-forest text-white text-[9px] flex items-center justify-center font-bold shrink-0">U1</span>
+                            <div>
+                              <div class="font-semibold text-ink-primary">Workspace User 01</div>
+                              <div class="text-[9px] text-ink-muted">Team Member</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="py-2 px-2 text-center font-medium">0</td>
+                        <td class="py-2 px-1.5 text-center text-ink-muted">-</td>
+                        <td class="py-2 px-1.5 text-center text-ink-muted">-</td>
+                        <td class="py-2 px-1.5 text-center text-ink-muted">-</td>
+                        <td class="py-2 px-1.5 text-center text-ink-muted">-</td>
+                        <td class="py-2 px-1.5 text-center text-ink-muted">-</td>
+                        <td class="py-2 px-1.5 text-center text-ink-muted">-</td>
+                        <td class="py-2 px-1.5 text-center text-ink-muted">-</td>
+                      </tr>
+                      <tr>
+                        <td class="py-2 px-2.5">
+                          <div class="flex items-center gap-2">
+                            <span class="w-6 h-6 rounded-full bg-brand-teal text-white text-[9px] flex items-center justify-center font-bold shrink-0">U2</span>
+                            <div>
+                              <div class="font-semibold text-ink-primary">Workspace User 02</div>
+                              <div class="text-[9px] text-ink-muted">Team Member</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="py-2 px-2 text-center font-medium">0</td>
+                        <td class="py-2 px-1.5 text-center text-ink-muted">-</td>
+                        <td class="py-2 px-1.5 text-center text-ink-muted">-</td>
+                        <td class="py-2 px-1.5 text-center text-ink-muted">-</td>
+                        <td class="py-2 px-1.5 text-center text-ink-muted">-</td>
+                        <td class="py-2 px-1.5 text-center text-ink-muted">-</td>
+                        <td class="py-2 px-1.5 text-center text-ink-muted">-</td>
+                        <td class="py-2 px-1.5 text-center text-ink-muted">-</td>
+                      </tr>
+                      <tr>
+                        <td class="py-2 px-2.5">
+                          <div class="flex items-center gap-2">
+                            <span class="w-6 h-6 rounded-full bg-amber-600 text-white text-[9px] flex items-center justify-center font-bold shrink-0">U3</span>
+                            <div>
+                              <div class="font-semibold text-ink-primary">Workspace User 03</div>
+                              <div class="text-[9px] text-ink-muted">Team Member</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="py-2 px-2 text-center font-medium">0</td>
+                        <td class="py-2 px-1.5 text-center text-ink-muted">-</td>
+                        <td class="py-2 px-1.5 text-center text-ink-muted">-</td>
+                        <td class="py-2 px-1.5 text-center text-ink-muted">-</td>
+                        <td class="py-2 px-1.5 text-center text-ink-muted">-</td>
+                        <td class="py-2 px-1.5 text-center text-ink-muted">-</td>
+                        <td class="py-2 px-1.5 text-center text-ink-muted">-</td>
+                        <td class="py-2 px-1.5 text-center text-ink-muted">-</td>
+                      </tr>
+                      <tr>
+                        <td class="py-2 px-2.5">
+                          <div class="flex items-center gap-2">
+                            <span class="w-6 h-6 rounded-full bg-pink-600 text-white text-[9px] flex items-center justify-center font-bold shrink-0">U4</span>
+                            <div>
+                              <div class="font-semibold text-ink-primary">Workspace User 04</div>
+                              <div class="text-[9px] text-ink-muted">Team Member</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="py-2 px-2 text-center font-medium">0</td>
+                        <td class="py-2 px-1.5 text-center text-ink-muted">-</td>
+                        <td class="py-2 px-1.5 text-center text-ink-muted">-</td>
+                        <td class="py-2 px-1.5 text-center text-ink-muted">-</td>
+                        <td class="py-2 px-1.5 text-center text-ink-muted">-</td>
+                        <td class="py-2 px-1.5 text-center text-ink-muted">-</td>
+                        <td class="py-2 px-1.5 text-center text-ink-muted">-</td>
+                        <td class="py-2 px-1.5 text-center text-ink-muted">-</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Right Text -->
+          <div class="lg:col-span-5 order-1 lg:order-2 reveal">
+            <div class="text-xs font-semibold uppercase tracking-[0.14em] text-brand-orange mb-3">
+              SHOWCASE 02 · ATTENDANCE &amp; TEAM OPERATIONS
+            </div>
+            <h2 class="section-heading font-bold text-ink-primary mb-4">
+              Structured shift check-ins and attendance logs.
+            </h2>
+            <p class="text-base text-ink-secondary leading-relaxed mb-6">
+              The Attendance module combines individual shift-start controls with a filterable multi-day attendance table so teams can access check-in controls and review attendance records in one view.
+            </p>
+            <ul class="space-y-3 text-sm text-ink-secondary">
+              <li class="flex items-start gap-2.5">
+                <span class="w-5 h-5 rounded-full bg-brand-teal/15 text-brand-teal flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">✓</span>
+                <span><strong>Shift Start &amp; Optional Photo:</strong> Users can capture a camera photo or upload an image from their device before clicking <em>Start Shift</em>.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="w-5 h-5 rounded-full bg-brand-teal/15 text-brand-teal flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">✓</span>
+                <span><strong>GPS Location Messaging:</strong> Informs users that current GPS location is captured when starting a shift and updated while online.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="w-5 h-5 rounded-full bg-brand-teal/15 text-brand-teal flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">✓</span>
+                <span><strong>Search &amp; Date Filtering:</strong> Search users and filter records by date range or quick presets (Today, Yesterday, Last 7 days, Current Month).</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SHOWCASE C: Connected Navigation & Multi-Tenant Login -->
+      <div class="max-w-[1300px] mx-auto px-5 sm:px-8 lg:px-12">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          
+          <!-- Left Text -->
+          <div class="lg:col-span-5 reveal">
+            <div class="text-xs font-semibold uppercase tracking-[0.14em] text-brand-orange mb-3">
+              SHOWCASE 03 · CONNECTED NAVIGATION
+            </div>
+            <h2 class="section-heading font-bold text-ink-primary mb-4">
+              Connected navigation across every business area.
+            </h2>
+            <p class="text-base text-ink-secondary leading-relaxed mb-6">
+              From the split-screen Tenant Portal sign-in experience to the persistent 16-module sidebar, Saga Luxury Properties provides navigation to its existing business areas through a shared interface.
+            </p>
+            <div class="p-4 rounded-[12px] bg-surface-primary border border-border-subtle space-y-2 text-xs text-ink-secondary">
+              <div class="font-semibold text-ink-primary">Consistent Interface Shell</div>
+              <p>
+                Every screen shares the forest-green navigation sidebar and top header bar with controls for sidebar toggling, theme switching, chat access, and notification alerts.
+              </p>
+            </div>
+          </div>
+
+          <!-- Right Authentic Split Login + Sidebar Showcase (image_22ccfc.png) -->
+          <div class="lg:col-span-7 reveal" style="transition-delay: 100ms;">
+            <div class="rounded-[16px] overflow-hidden border border-border-strong shadow-mockup grid grid-cols-1 sm:grid-cols-12">
+              
+              <!-- Left Forest Green Brand Panel from Login Screenshot -->
+              <div class="sm:col-span-6 bg-brand-forest text-ink-onDark p-6 sm:p-8 flex flex-col justify-between min-h-[290px]">
+                <div class="flex items-center gap-2.5">
+                  <span class="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-brand-orange">
+                    🏢
+                  </span>
+                  <span class="text-sm font-semibold text-white">Tenant Portal</span>
+                </div>
+
+                <div class="my-6">
+                  <div class="text-[10px] font-semibold uppercase tracking-[0.16em] text-brand-orange mb-2">
+                    REAL ESTATE WORKSPACE
+                  </div>
+                  <div class="text-2xl font-bold text-white leading-tight mb-3">
+                    One platform.<br/>Multiple tenants.
+                  </div>
+                  <p class="text-xs text-white/75 leading-relaxed mb-4">
+                    Sign in to your organization's workspace. Secure, scalable, and built for teams.
+                  </p>
+                  <div class="inline-flex items-center gap-1.5 text-[11px] text-white/80">
+                    <span class="text-brand-orange">🛡️</span> Secure tenant authentication
+                  </div>
+                </div>
+
+                <div class="text-[10px] tracking-[0.14em] uppercase text-white/50">
+                  TEAM CRM
+                </div>
+              </div>
+
+              <!-- Right Warm Ivory Sign-In Form Preview -->
+              <div class="sm:col-span-6 bg-surface-main p-6 sm:p-8 flex flex-col justify-center">
+                <div class="text-lg font-bold text-ink-primary mb-1">Welcome back</div>
+                <div class="text-xs text-ink-secondary mb-5">Sign in securely to continue to your workspace.</div>
+                
+                <div class="space-y-3 text-xs">
+                  <div>
+                    <span class="block text-[11px] font-medium text-ink-primary mb-1">Email <span class="text-red-500">*</span></span>
+                    <div class="w-full px-3 py-2 rounded-md bg-surface-primary border border-border-strong text-ink-muted flex items-center gap-2">
+                      <span>✉️</span>
+                      <span>Enter your email here</span>
+                    </div>
+                  </div>
+                  <div>
+                    <span class="block text-[11px] font-medium text-ink-primary mb-1">Password <span class="text-red-500">*</span></span>
+                    <div class="w-full px-3 py-2 rounded-md bg-surface-primary border border-border-strong text-ink-muted flex items-center justify-between">
+                      <span>🔒 ••••••••</span>
+                      <span>👁️</span>
+                    </div>
+                  </div>
+                  <a 
+                    href="https://360dubai.ae/" 
+                    data-crm-login
+                    class="w-full block text-center py-2.5 rounded-md bg-brand-teal hover:bg-brand-tealHover text-white font-semibold transition-colors mt-2"
+                  >
+                    Sign in
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- =====================================================================
+         SECTION 7 — BUSINESS BENEFITS
+         ===================================================================== -->
+    <section id="benefits" class="py-20 md:py-28 bg-surface-primary border-b border-border-subtle">
+      <div class="max-w-[1300px] mx-auto px-5 sm:px-8 lg:px-12">
+        
+        <div class="max-w-3xl mb-14 reveal">
+          <div class="text-xs font-semibold uppercase tracking-[0.14em] text-brand-orange mb-3">
+            PRACTICAL OPERATIONAL VALUE
+          </div>
+          <h2 class="section-heading font-bold text-ink-primary mb-4">
+            Built around the work real-estate teams manage every day.
+          </h2>
+          <p class="text-base sm:text-lg text-ink-secondary leading-relaxed">
+            Grounded in the verified capabilities of the Saga Luxury Properties interface, the platform focuses on clarity, structured records, and consistent navigation.
+          </p>
+        </div>
+
+        <!-- 5 Concise Benefit Blocks -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <div class="reveal bg-surface-secondary p-7 rounded-[14px] border border-border-subtle">
+            <div class="w-10 h-10 rounded-lg bg-brand-teal/10 text-brand-teal flex items-center justify-center mb-4 font-bold">
+              01
+            </div>
+            <h3 class="text-lg font-bold text-ink-primary mb-2">Greater visibility</h3>
+            <p class="text-sm text-ink-secondary leading-relaxed">
+              The dashboard brings visible lead summaries, activity updates, and source analytics together so teams can review current status in one place.
+            </p>
+          </div>
+
+          <div class="reveal bg-surface-secondary p-7 rounded-[14px] border border-border-subtle" style="transition-delay: 70ms;">
+            <div class="w-10 h-10 rounded-lg bg-brand-teal/10 text-brand-teal flex items-center justify-center mb-4 font-bold">
+              02
+            </div>
+            <h3 class="text-lg font-bold text-ink-primary mb-2">A more organised workspace</h3>
+            <p class="text-sm text-ink-secondary leading-relaxed">
+              The application provides dedicated navigation areas for leads, properties, projects, inquiries, and other operational modules.
+            </p>
+          </div>
+
+          <div class="reveal bg-surface-secondary p-7 rounded-[14px] border border-border-subtle" style="transition-delay: 140ms;">
+            <div class="w-10 h-10 rounded-lg bg-brand-teal/10 text-brand-teal flex items-center justify-center mb-4 font-bold">
+              03
+            </div>
+            <h3 class="text-lg font-bold text-ink-primary mb-2">Team activity records</h3>
+            <p class="text-sm text-ink-secondary leading-relaxed">
+              The attendance interface provides shift check-in controls, optional photo capture, and a view of attendance records with date-based filters.
+            </p>
+          </div>
+
+          <div class="reveal bg-surface-secondary p-7 rounded-[14px] border border-border-subtle" style="transition-delay: 210ms;">
+            <div class="w-10 h-10 rounded-lg bg-brand-teal/10 text-brand-teal flex items-center justify-center mb-4 font-bold">
+              04
+            </div>
+            <h3 class="text-lg font-bold text-ink-primary mb-2">Access to operational information</h3>
+            <p class="text-sm text-ink-secondary leading-relaxed">
+              The existing navigation makes separate business areas—including Tasks, Team, Invoices, Commissions, and Reports—accessible through one application.
+            </p>
+          </div>
+
+          <div class="reveal bg-surface-secondary p-7 rounded-[14px] border border-border-subtle md:col-span-2 lg:col-span-2 flex flex-col justify-between" style="transition-delay: 280ms;">
+            <div>
+              <div class="w-10 h-10 rounded-lg bg-brand-teal/10 text-brand-teal flex items-center justify-center mb-4 font-bold">
+                05
+              </div>
+              <h3 class="text-lg font-bold text-ink-primary mb-2">A consistent working environment</h3>
+              <p class="text-sm text-ink-secondary leading-relaxed max-w-2xl">
+                The shared navigation sidebar, top utility header, and warm, high-contrast visual layout provide a consistent interface across the screens shown in the CRM.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 8 — COMPACT MODULE SUMMARY
+         ===================================================================== -->
+    <section class="py-20 md:py-24 bg-surface-main border-b border-border-subtle">
+      <div class="max-w-[1300px] mx-auto px-5 sm:px-8 lg:px-12">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4 reveal">
+          <div>
+            <div class="text-xs font-semibold uppercase tracking-[0.14em] text-brand-orange mb-3">
+              EDITORIAL NAVIGATION SUMMARY
+            </div>
+            <h2 class="section-heading font-bold text-ink-primary">
+              One workspace. Multiple areas of operation.
+            </h2>
+          </div>
+          <p class="text-xs text-ink-muted max-w-sm">
+            The groupings below are editorial navigation aids organizing the 16 verified labels visible in the Saga Luxury Properties sidebar.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+          
+          <!-- Group 1 -->
+          <div class="reveal bg-surface-primary p-5 rounded-[14px] border border-border-subtle">
+            <div class="text-xs font-bold uppercase tracking-wider text-brand-teal mb-3 pb-2 border-b border-border-subtle">
+              Lead activity
+            </div>
+            <ul class="space-y-2.5 text-sm font-medium text-ink-primary">
+              <li class="flex items-center justify-between">
+                <span>Dashboard</span>
+                <span class="text-[10px] px-2 py-0.5 rounded bg-teal-50 text-brand-teal">Inspected</span>
+              </li>
+              <li class="flex items-center justify-between">
+                <span>Leads</span>
+                <span class="text-[10px] text-ink-muted">Module</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Group 2 -->
+          <div class="reveal bg-surface-primary p-5 rounded-[14px] border border-border-subtle" style="transition-delay: 60ms;">
+            <div class="text-xs font-bold uppercase tracking-wider text-brand-teal mb-3 pb-2 border-b border-border-subtle">
+              Business records
+            </div>
+            <ul class="space-y-2.5 text-sm font-medium text-ink-primary">
+              <li class="flex items-center justify-between"><span>Data</span><span class="text-[10px] text-ink-muted">Module</span></li>
+              <li class="flex items-center justify-between"><span>Projects</span><span class="text-[10px] text-ink-muted">Module</span></li>
+              <li class="flex items-center justify-between"><span>Properties</span><span class="text-[10px] text-ink-muted">Module</span></li>
+              <li class="flex items-center justify-between"><span>Inquiries</span><span class="text-[10px] text-ink-muted">Module</span></li>
+            </ul>
+          </div>
+
+          <!-- Group 3 -->
+          <div class="reveal bg-surface-primary p-5 rounded-[14px] border border-border-subtle" style="transition-delay: 120ms;">
+            <div class="text-xs font-bold uppercase tracking-wider text-brand-teal mb-3 pb-2 border-b border-border-subtle">
+              Team operations
+            </div>
+            <ul class="space-y-2.5 text-sm font-medium text-ink-primary">
+              <li class="flex items-center justify-between"><span>Groups</span><span class="text-[10px] text-ink-muted">Module</span></li>
+              <li class="flex items-center justify-between"><span>Tasks</span><span class="text-[10px] text-ink-muted">Module</span></li>
+              <li class="flex items-center justify-between"><span>Team</span><span class="text-[10px] text-ink-muted">Module</span></li>
+              <li class="flex items-center justify-between">
+                <span>Attendance</span>
+                <span class="text-[10px] px-2 py-0.5 rounded bg-teal-50 text-brand-teal">Inspected</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Group 4 -->
+          <div class="reveal bg-surface-primary p-5 rounded-[14px] border border-border-subtle" style="transition-delay: 180ms;">
+            <div class="text-xs font-bold uppercase tracking-wider text-brand-teal mb-3 pb-2 border-b border-border-subtle">
+              Financial &amp; analytical
+            </div>
+            <ul class="space-y-2.5 text-sm font-medium text-ink-primary">
+              <li class="flex items-center justify-between"><span>Invoices</span><span class="text-[10px] text-ink-muted">Module</span></li>
+              <li class="flex items-center justify-between"><span>Commissions</span><span class="text-[10px] text-ink-muted">Module</span></li>
+              <li class="flex items-center justify-between"><span>Reports</span><span class="text-[10px] text-ink-muted">Module</span></li>
+            </ul>
+          </div>
+
+          <!-- Group 5 -->
+          <div class="reveal bg-surface-primary p-5 rounded-[14px] border border-border-subtle sm:col-span-2 lg:col-span-1" style="transition-delay: 240ms;">
+            <div class="text-xs font-bold uppercase tracking-wider text-brand-teal mb-3 pb-2 border-b border-border-subtle">
+              Communication &amp; config
+            </div>
+            <ul class="space-y-2.5 text-sm font-medium text-ink-primary">
+              <li class="flex items-center justify-between"><span>Chat</span><span class="text-[10px] text-ink-muted">Module</span></li>
+              <li class="flex items-center justify-between"><span>Approvals</span><span class="text-[10px] text-ink-muted">Module</span></li>
+              <li class="flex items-center justify-between"><span>Global Config</span><span class="text-[10px] text-ink-muted">Module</span></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SECTION 9 — FINAL CALL TO ACTION
+         ===================================================================== -->
+    <section id="contact" class="py-20 md:py-28 bg-brand-forest bg-dark-grid text-ink-onDark relative overflow-hidden">
+      <div class="max-w-[1300px] mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
+        <div class="max-w-3xl mx-auto text-center reveal">
+          
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-semibold uppercase tracking-[0.14em] text-brand-orange mb-6">
+            TENANT WORKSPACE ACCESS
+          </div>
+
+          <h2 class="section-heading font-bold text-ink-onDark mb-5">
+            Bring your real-estate workspace into focus.
+          </h2>
+
+          <p class="text-base sm:text-lg text-ink-onDark/80 leading-relaxed mb-9 max-w-xl mx-auto">
+            Access your Saga Luxury Properties workspace to work with the tools and information available in your CRM.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a 
+              href="https://360dubai.ae/" 
+              data-crm-login
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-brand-teal hover:bg-brand-tealHover active:translate-y-[1px] text-ink-onDark font-semibold text-base px-8 py-4 rounded-[12px] shadow-lg transition-all duration-200 border border-white/10"
+            >
+              <span>Sign In to Your Workspace</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+            <a 
+              href="#features" 
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-ink-onDark font-medium text-base px-7 py-4 rounded-[12px] border border-white/15 transition-all duration-200"
+            >
+              <span>Back to Features</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       SECTION 10 — FOOTER
+       ===================================================================== -->
+  <footer class="bg-brand-deep text-ink-onDark border-t border-white/10 py-16">
+    <div class="max-w-[1300px] mx-auto px-5 sm:px-8 lg:px-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-white/10 items-start">
+        
+        <!-- Brand Column with Properly Scaled & Flush-Left Aligned Logo -->
+        <div class="md:col-span-5 flex flex-col items-start space-y-5">
+          <a 
+            href="#top" 
+            class="inline-flex items-center focus:outline-none rounded-lg -ml-0.5"
+            aria-label="Saga Luxury Properties — Return to top"
+          >
+            <span class="brand-logo-frame w-[185px] sm:w-[215px] md:w-[230px] lg:w-[260px] xl:w-[280px]">
+              <img 
+                src="saga.png" 
+                alt="Saga Luxury Properties" 
+                onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='flex';"
+              />
+            </span>
+            <div class="hidden items-center gap-3.5 select-none" style="display: none;">
+              <svg class="h-12 sm:h-14 w-auto shrink-0" viewBox="0 0 64 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 28L22 23V66H16V28Z" fill="#CBD5E1"/>
+                <path d="M27 19L33 14V66H27V19Z" fill="#CBD5E1"/>
+                <path d="M38 10L44 5V66H38V10Z" fill="#CBD5E1"/>
+                <path d="M46 23C36 26 10 31 10 42C10 51 48 50 48 61C48 69 26 71 12 64L10 56C22 63 39 63 39 58C39 52 8 51 8 40C8 29 33 23 45 16L46 23Z" fill="#C89D66"/>
+              </svg>
+              <div class="flex flex-col leading-none tracking-[0.18em]">
+                <span class="text-base sm:text-lg font-semibold text-white font-serif">SAGA LUXURY</span>
+                <span class="text-xs sm:text-sm font-medium text-white/70 tracking-[0.25em] mt-1.5 font-serif">PROPERTIES</span>
+              </div>
+            </div>
+          </a>
+          <p class="text-sm text-ink-onDark/70 max-w-sm leading-relaxed">
+            Saga Luxury Properties is a multi-tenant real-estate CRM workspace uniting lead tracking, property and project directories, inquiries, attendance logs, and operational reporting.
+          </p>
+        </div>
+
+        <!-- Landing Page Sections -->
+        <div class="md:col-span-4">
+          <div class="text-xs font-semibold uppercase tracking-wider text-ink-onDark/50 mb-4">
+            Page Navigation
+          </div>
+          <ul class="grid grid-cols-2 gap-2.5 text-sm text-ink-onDark/80">
+            <li><a href="#overview" class="hover:text-white transition-colors">Overview</a></li>
+            <li><a href="#features" class="hover:text-white transition-colors">Features</a></li>
+            <li><a href="#workflow" class="hover:text-white transition-colors">Workflow</a></li>
+            <li><a href="#showcase" class="hover:text-white transition-colors">Showcase</a></li>
+            <li><a href="#benefits" class="hover:text-white transition-colors">Benefits</a></li>
+            <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- CRM Portal Access -->
+        <div class="md:col-span-3">
+          <div class="text-xs font-semibold uppercase tracking-wider text-ink-onDark/50 mb-4">
+            CRM Portal
+          </div>
+          <p class="text-xs text-ink-onDark/70 mb-4 leading-relaxed">
+            Existing team members and organization tenants can sign in directly via the portal.
+          </p>
+          <a 
+            href="https://360dubai.ae/" 
+            data-crm-login
+            class="inline-flex items-center gap-2 text-sm font-semibold text-teal-300 hover:text-white transition-colors"
+          >
+            <span>Sign In to CRM</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-ink-onDark/50">
+        <div>
+          Saga Luxury Properties — Real Estate Management Workspace
+        </div>
+        <div>
+          Terms of Service &amp; Privacy Policy are available on the CRM Sign-In portal.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       JAVASCRIPT: CONFIGURATION, ACCESSIBLE MENU, SCROLL REVEALS & 3D TILT
+       ===================================================================== -->
+  <script>
+    /**
+     * Explicit CRM Route Configuration
+     * Uses the verified URL from the manager's brief (https://360dubai.ae/).
+     * Update loginUrl here if deploying on an internal route such as '/login'.
+     */
+    const CRM_CONFIG = {
+      loginUrl: 'https://360dubai.ae/'
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Bind all [data-crm-login] links to the configured CRM login route
+      const loginLinks = document.querySelectorAll('[data-crm-login]');
+      loginLinks.forEach(link => {
+        link.setAttribute('href', CRM_CONFIG.loginUrl);
+      });
+
+      // 2. Sticky Navbar subtle elevation & active section state on scroll
+      const navbar = document.getElementById('site-navbar');
+      const navLinks = document.querySelectorAll('.nav-link[data-nav-section]');
+      const trackedSections = ['overview', 'features', 'workflow', 'benefits', 'contact']
+        .map(id => document.getElementById(id))
+        .filter(Boolean);
+
+      const handleScroll = () => {
+        if (window.scrollY > 16) {
+          navbar.classList.add('shadow-lg', 'bg-brand-deep/95', 'backdrop-blur-md');
+        } else {
+          navbar.classList.remove('shadow-lg', 'bg-brand-deep/95', 'backdrop-blur-md');
+        }
+
+        // Highlight active section link in desktop navbar
+        const scrollPosition = window.scrollY + 160;
+        let currentSectionId = '';
+        trackedSections.forEach(section => {
+          if (scrollPosition >= section.offsetTop) {
+            currentSectionId = section.id;
+          }
+        });
+
+        navLinks.forEach(link => {
+          const isMatch = link.getAttribute('data-nav-section') === currentSectionId;
+          link.classList.toggle('text-white', isMatch);
+          link.classList.toggle('bg-white/10', isMatch);
+          link.classList.toggle('text-ink-onDark/80', !isMatch);
+        });
+      };
+
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      handleScroll();
+
+      // 3. Accessible Mobile Navigation Drawer
+      const menuBtn = document.getElementById('mobile-menu-btn');
+      const menuPanel = document.getElementById('mobile-menu-panel');
+      const iconOpen = document.getElementById('menu-icon-open');
+      const iconClose = document.getElementById('menu-icon-close');
+      const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+      const closeMobileMenu = () => {
+        if (!menuPanel || menuPanel.classList.contains('hidden')) return;
+        menuPanel.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+      };
+
+      const toggleMobileMenu = () => {
+        const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+        if (isExpanded) {
+          closeMobileMenu();
+        } else {
+          menuPanel.classList.remove('hidden');
+          menuBtn.setAttribute('aria-expanded', 'true');
+          iconOpen.classList.add('hidden');
+          iconClose.classList.remove('hidden');
+        }
+      };
+
+      if (menuBtn) {
+        menuBtn.addEventListener('click', toggleMobileMenu);
+      }
+
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeMobileMenu();
+        }
+      });
+
+      // 4. Scroll-Triggered Reveal Animations with Reduced-Motion Check
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const revealElements = document.querySelectorAll('.reveal:not(.is-visible)');
+
+      if (prefersReducedMotion) {
+        revealElements.forEach(el => el.classList.add('is-visible'));
+      } else if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries, obs) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              obs.unobserve(entry.target);
+            }
+          });
+        }, {
+          rootMargin: '0px 0px -8% 0px',
+          threshold: 0.1
+        });
+
+        revealElements.forEach(el => observer.observe(el));
+      } else {
+        revealElements.forEach(el => el.classList.add('is-visible'));
+      }
+
+      // 5. Restrained 3D Card Hover on Pointer Devices Only
+      const supportsHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      if (supportsHover && !prefersReducedMotion) {
+        const tiltCards = document.querySelectorAll('.tilt-card');
+        tiltCards.forEach(card => {
+          card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            // Subtle max 1.8-degree rotation so text stays crisp and readable
+            const rotateX = ((y - centerY) / centerY) * -1.8;
+            const rotateY = ((x - centerX) / centerX) * 1.8;
+            card.style.transform = `perspective(1000px) translateY(-3px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg)`;
+          });
+
+          card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) translateY(0) rotateX(0) rotateY(0)';
+          });
+        });
+      }
+    });
+  </script>
+</body>
+</html>
