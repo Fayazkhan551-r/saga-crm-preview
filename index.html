@@ -358,15 +358,15 @@
     <!-- =====================================================================
          SECTION 2 — HERO SECTION
          ===================================================================== -->
-    <section class="relative overflow-hidden pt-10 pb-20 md:pt-16 md:pb-28 lg:pt-20 lg:pb-32 bg-editorial-grid border-b border-border-subtle">
+    <section class="relative overflow-hidden pt-6 pb-16 sm:pt-8 sm:pb-20 md:pt-16 md:pb-28 lg:pt-20 lg:pb-32 bg-editorial-grid border-b border-border-subtle">
       <!-- Subtle architectural ambient accent -->
       <div class="pointer-events-none absolute top-0 right-0 w-[520px] h-[520px] rounded-full bg-brand-teal/5 blur-3xl -z-10"></div>
 
       <div class="max-w-[1300px] xl:max-w-[1380px] mx-auto px-5 sm:px-8 lg:px-12">
-        <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,43%)_minmax(0,57%)] gap-12 lg:gap-12 xl:gap-16 items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,43%)_minmax(0,57%)] gap-7 sm:gap-9 md:gap-12 lg:gap-12 xl:gap-16 items-center">
           
-          <!-- Left Column: Messaging -->
-          <div class="flex flex-col items-start text-left z-10">
+          <!-- Left Column on Desktop / Second Block on Mobile: Messaging -->
+          <div class="order-2 md:order-1 flex flex-col items-start text-left z-10 min-w-0">
             <div class="reveal is-visible inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-surface-primary border border-border-subtle shadow-sm mb-6">
               <span class="w-2 h-2 rounded-full bg-brand-orange"></span>
               <span class="text-xs font-semibold uppercase tracking-[0.14em] text-brand-orange">
@@ -410,279 +410,46 @@
             </div>
           </div>
 
-          <!-- Right Column: Authentic Hero Interface Reconstruction -->
-          <div class="relative">
+          <!-- Right Column on Desktop / First Element on Mobile: Hero MP4 Animation -->
+          <div class="relative order-1 md:order-2 w-full min-w-0">
             <!-- Offset dark forest-green backing frame -->
             <div class="hidden sm:block absolute -inset-3 md:-inset-4 bg-brand-forest rounded-[20px] transform translate-x-3 translate-y-3 -z-10 shadow-xl"></div>
 
-            <!-- Main Browser / Application Frame (Faithful to image_22cd01.png) -->
-            <div class="reveal is-visible rounded-[16px] bg-surface-main border border-border-strong shadow-mockup overflow-hidden" style="transition-delay: 200ms;" role="img" aria-label="Saga Luxury Properties CRM Dashboard Preview showing all 16 sidebar modules, 251 total leads, lead sources chart, and live activity feed">
-              
-              <!-- Split Sidebar + Dashboard Content -->
-              <div class="grid grid-cols-12 bg-surface-main">
-                
-                <!-- Persistent Left Navigation Sidebar (Exact 16 Modules + Original Saga Logo from image_22cd01.png) -->
-                <div class="hidden sm:flex sm:col-span-3 bg-brand-forest text-ink-onDark p-2.5 flex-col justify-between border-r border-white/10 select-none">
-                  <div>
-                    <!-- Top Sidebar Brand Header using actual saga.png -->
-                    <div class="px-1.5 pt-1 pb-2.5 mb-2 border-b border-white/10 flex items-center">
-                      <span class="brand-logo-frame w-[118px]">
-                        <img 
-                          src="saga.png" 
-                          alt="Saga Luxury Properties"
-                          onerror="this.parentElement.style.display='none'; this.parentElement.nextElementSibling.style.display='flex';"
-                        />
-                      </span>
-                      <div class="hidden items-center gap-1.5" style="display: none;">
-                        <div class="w-4 h-4 rounded bg-white/10 flex items-center justify-center text-[9px] font-serif text-amber-300 font-bold">S</div>
-                        <div class="text-[8px] tracking-[0.14em] font-serif leading-tight text-white/90">
-                          SAGA LUXURY<br/><span class="text-[6.5px] text-white/60">PROPERTIES</span>
-                        </div>
-                      </div>
-                    </div>
+            <!-- Main Media Frame (Preserves rounded corners, deep-teal background, shadow, and 16:9 aspect ratio without cropping) -->
+            <div class="reveal is-visible relative aspect-video w-full rounded-[16px] bg-brand-forest border border-border-strong shadow-mockup overflow-hidden" style="transition-delay: 200ms;">
+              <video
+                id="hero-crm-video"
+                class="w-full h-full object-contain bg-brand-forest block"
+                width="1920"
+                height="1080"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                poster="image_22cd01.png"
+                aria-label="Saga Luxury Properties 3D real estate and CRM lead scoring animation"
+              >
+                <source id="hero-crm-video-source" src="saga-hero-animation.mp4" type="video/mp4" />
+                Your browser does not support HTML5 video playback.
+              </video>
 
-                    <!-- Complete 16-Item Navigation List matching image_22cd01.png -->
-                    <ul class="space-y-[1px] text-[10px] leading-tight">
-                      <li class="px-2 py-1.5 rounded-md bg-brand-teal/40 text-white font-medium flex items-center gap-2">
-                        <span class="w-1.5 h-1.5 rounded-full bg-teal-300"></span> Dashboard
-                      </li>
-                      <li class="px-2 py-1 text-white/75 flex items-center gap-2">Leads</li>
-                      <li class="px-2 py-1 text-white/75 flex items-center gap-2">Data</li>
-                      <li class="px-2 py-1 text-white/75 flex items-center gap-2">Projects</li>
-                      <li class="px-2 py-1 text-white/75 flex items-center gap-2">Properties</li>
-                      <li class="px-2 py-1 text-white/75 flex items-center gap-2">Inquiries</li>
-                      <li class="px-2 py-1 text-white/75 flex items-center gap-2">Groups</li>
-                      <li class="px-2 py-1 text-white/75 flex items-center gap-2">Tasks</li>
-                      <li class="px-2 py-1 text-white/75 flex items-center gap-2">Team</li>
-                      <li class="px-2 py-1 text-white/75 flex items-center gap-2">Attendance</li>
-                      <li class="px-2 py-1 text-white/75 flex items-center gap-2">Invoices</li>
-                      <li class="px-2 py-1 text-white/75 flex items-center gap-2">Commissions</li>
-                      <li class="px-2 py-1 text-white/75 flex items-center gap-2">Reports</li>
-                      <li class="px-2 py-1 text-white/75 flex items-center gap-2">Chat</li>
-                      <li class="px-2 py-1 text-white/75 flex items-center gap-2">Approvals</li>
-                      <li class="px-2 py-1 text-white/75 flex items-center gap-2">Global Config</li>
-                    </ul>
-                  </div>
-                  <div class="pt-2 mt-1 border-t border-white/10 text-[10px] text-white/60 px-2 flex items-center gap-1.5">
-                    <span>⇥</span>
-                    <span>Log out</span>
-                  </div>
-                </div>
-
-                <!-- Right Column: Top Header + Dashboard Main Workspace -->
-                <div class="col-span-12 sm:col-span-9 flex flex-col">
-                  
-                  <!-- Top Application Bar (Matches image_22cd01.png) -->
-                  <div class="bg-surface-primary border-b border-border-subtle px-3.5 py-2 flex items-center justify-between">
-                    <div class="flex items-center gap-2">
-                      <span class="text-ink-muted text-xs">◧</span>
-                      <span class="text-xs font-semibold text-ink-primary">Dashboard</span>
-                    </div>
-                    <!-- Top-Right Utility Controls: Theme, Chat, Bell (75), Avatar -->
-                    <div class="flex items-center gap-2.5 text-[11px] text-ink-secondary">
-                      <span class="w-5 h-5 rounded-full bg-surface-secondary border border-border-subtle inline-flex items-center justify-center text-[10px]" title="Theme toggle">☾</span>
-                      <span class="w-5 h-5 rounded-full bg-surface-secondary border border-border-subtle inline-flex items-center justify-center text-[10px]" title="Chat">💬</span>
-                      <span class="relative inline-flex items-center justify-center w-5 h-5 rounded-full bg-surface-secondary border border-border-subtle text-[10px]" title="Notifications">
-                        🔔
-                        <span class="absolute -top-1 -right-1.5 px-1 rounded-full bg-brand-teal text-white text-[8px] font-bold leading-tight">75</span>
-                      </span>
-                      <span class="w-5 h-5 rounded-full bg-brand-forest text-white text-[9px] font-bold inline-flex items-center justify-center">U</span>
-                    </div>
-                  </div>
-
-                  <!-- Dashboard Body -->
-                  <div class="p-3 sm:p-3.5 space-y-2.5">
-                    
-                    <!-- Sub-bar: Timeframe, User Filter, Refresh, Just now -->
-                    <div class="flex flex-wrap items-center justify-between gap-2 text-[10px]">
-                      <div class="flex items-center gap-1.5">
-                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-primary border border-border-subtle text-ink-primary font-medium">
-                          📅 All Time <span class="text-ink-muted ml-1">▾</span>
-                        </span>
-                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-primary border border-border-subtle text-ink-primary font-medium">
-                          All users <span class="text-ink-muted ml-1">▾</span>
-                        </span>
-                        <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-surface-primary border border-border-subtle text-ink-secondary">
-                          ↻
-                        </span>
-                      </div>
-                      <span class="inline-flex items-center gap-1 text-ink-muted font-medium">
-                        🕒 Just now <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
-                      </span>
-                    </div>
-
-                    <!-- Top 5 Metric Cards (Exact Full Titles from image_22cd01.png) -->
-                    <div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
-                      <div class="bg-surface-primary p-2 rounded-lg border border-border-subtle">
-                        <div class="flex items-center justify-between text-[9.5px] text-ink-secondary mb-1 gap-1">
-                          <span class="leading-tight">New Lead</span>
-                          <span class="w-4 h-4 rounded-full bg-blue-50 text-blue-600 inline-flex items-center justify-center font-bold shrink-0">+</span>
-                        </div>
-                        <div class="text-sm font-bold text-ink-primary">0</div>
-                        <div class="text-[8.5px] text-ink-muted">0%</div>
-                      </div>
-                      <div class="bg-surface-primary p-2 rounded-lg border border-border-subtle">
-                        <div class="flex items-center justify-between text-[9.5px] text-ink-secondary mb-1 gap-1">
-                          <span class="leading-tight">Pending</span>
-                          <span class="w-4 h-4 rounded-full bg-amber-50 text-amber-600 inline-flex items-center justify-center text-[8px] shrink-0">●</span>
-                        </div>
-                        <div class="text-sm font-bold text-ink-primary">2</div>
-                        <div class="text-[8.5px] text-ink-muted">1%</div>
-                      </div>
-                      <div class="bg-surface-primary p-2 rounded-lg border border-border-subtle">
-                        <div class="flex items-center justify-between text-[9.5px] text-ink-secondary mb-1 gap-1">
-                          <span class="leading-tight">Callbacks</span>
-                          <span class="w-4 h-4 rounded-full bg-purple-50 text-purple-600 inline-flex items-center justify-center text-[8px] shrink-0">✆</span>
-                        </div>
-                        <div class="text-sm font-bold text-ink-primary">0</div>
-                        <div class="text-[8.5px] text-ink-muted">0%</div>
-                      </div>
-                      <div class="bg-surface-primary p-2 rounded-lg border border-border-subtle">
-                        <div class="flex items-center justify-between text-[9px] text-ink-secondary mb-1 gap-1">
-                          <span class="leading-tight">Meetings Scheduled</span>
-                          <span class="w-4 h-4 rounded-full bg-indigo-50 text-indigo-600 inline-flex items-center justify-center text-[8px] shrink-0">📅</span>
-                        </div>
-                        <div class="text-sm font-bold text-ink-primary">0</div>
-                        <div class="text-[8.5px] text-ink-muted">0%</div>
-                      </div>
-                      <div class="col-span-2 sm:col-span-1 bg-surface-primary p-2 rounded-lg border border-border-subtle">
-                        <div class="flex items-center justify-between text-[9px] text-ink-secondary mb-1 gap-1">
-                          <span class="leading-tight">Site Visits Scheduled</span>
-                          <span class="w-4 h-4 rounded-full bg-emerald-50 text-emerald-600 inline-flex items-center justify-center text-[8px] shrink-0">📍</span>
-                        </div>
-                        <div class="text-sm font-bold text-ink-primary">0</div>
-                        <div class="text-[8.5px] text-ink-muted">0%</div>
-                      </div>
-                    </div>
-
-                    <!-- Lead Overview Strip -->
-                    <div class="bg-surface-primary p-2.5 rounded-lg border border-border-subtle">
-                      <div class="flex items-center justify-between mb-2">
-                        <div>
-                          <div class="text-[8.5px] uppercase tracking-wider font-semibold text-ink-muted">LEAD OVERVIEW</div>
-                          <div class="text-xs font-bold text-ink-primary">251 <span class="text-[10px] font-normal text-ink-secondary">Total leads</span></div>
-                          <div class="text-[9px] text-brand-teal font-medium">All Time</div>
-                        </div>
-                        <span class="w-5 h-5 rounded-full bg-teal-50 text-brand-teal inline-flex items-center justify-center text-[10px]">⇅</span>
-                      </div>
-                      <div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5">
-                        <div class="p-1.5 rounded border border-border-subtle bg-surface-secondary/50">
-                          <div class="text-[9px] text-ink-secondary">Active</div>
-                          <div class="text-xs font-bold text-ink-primary">251</div>
-                        </div>
-                        <div class="p-1.5 rounded border border-border-subtle bg-surface-secondary/50">
-                          <div class="text-[9px] text-ink-secondary">Unassigned</div>
-                          <div class="text-xs font-bold text-ink-primary">1</div>
-                        </div>
-                        <div class="p-1.5 rounded border border-border-subtle bg-surface-secondary/50">
-                          <div class="text-[9px] text-ink-secondary">Booked</div>
-                          <div class="text-xs font-bold text-ink-primary">0</div>
-                        </div>
-                        <div class="p-1.5 rounded border border-border-subtle bg-surface-secondary/50">
-                          <div class="text-[9px] text-ink-secondary">Booking Cancel</div>
-                          <div class="text-xs font-bold text-ink-primary">0</div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Bottom Split: Lead Sources Bar Chart + Activity Feed -->
-                    <div class="grid grid-cols-1 md:grid-cols-12 gap-2.5">
-                      <!-- Lead Sources (251 Total: Facebook 132, Instagram 115, Data 2, Google Sheets 2) -->
-                      <div class="md:col-span-7 bg-surface-primary p-2.5 rounded-lg border border-border-subtle flex flex-col justify-between">
-                        <div class="flex flex-wrap items-center justify-between gap-1 mb-2">
-                          <div class="flex items-center gap-1.5">
-                            <span class="text-[11px] font-bold text-ink-primary">Lead Sources</span>
-                            <span class="text-[8.5px] px-1.5 py-0.5 rounded bg-teal-50 text-brand-teal font-semibold">Facebook · 53%</span>
-                          </div>
-                          <div class="flex items-center gap-1.5">
-                            <span class="text-[9px] text-ink-muted">TOTAL <strong class="text-ink-primary">251</strong></span>
-                            <span class="inline-flex rounded border border-border-subtle p-0.5 text-[8px] bg-surface-secondary">
-                              <span class="px-1.5 py-0.2 rounded bg-teal-50 text-brand-teal font-semibold">Bar</span>
-                              <span class="px-1.5 py-0.2 text-ink-muted">Donut</span>
-                            </span>
-                          </div>
-                        </div>
-
-                        <div class="flex items-end gap-2 h-24 pt-2 border-b border-border-subtle">
-                          <!-- Y-axis scale matching image_22cd01.png (140, 105, 70, 35, 0) -->
-                          <div class="flex flex-col justify-between h-full text-[8px] text-ink-muted pb-1 pr-1 text-right select-none">
-                            <span>140</span>
-                            <span>105</span>
-                            <span>70</span>
-                            <span>35</span>
-                            <span>0</span>
-                          </div>
-                          <div class="flex-1 grid grid-cols-4 gap-2 items-end h-full px-1">
-                            <div class="flex flex-col items-center gap-0.5">
-                              <span class="text-[8.5px] font-bold text-ink-primary">132</span>
-                              <div class="w-6 sm:w-7 bg-blue-600 rounded-t h-16"></div>
-                            </div>
-                            <div class="flex flex-col items-center gap-0.5">
-                              <span class="text-[8.5px] font-bold text-ink-primary">115</span>
-                              <div class="w-6 sm:w-7 bg-emerald-500 rounded-t h-14"></div>
-                            </div>
-                            <div class="flex flex-col items-center gap-0.5">
-                              <span class="text-[8.5px] font-bold text-ink-primary">2</span>
-                              <div class="w-6 sm:w-7 bg-amber-500 rounded-t h-1"></div>
-                            </div>
-                            <div class="flex flex-col items-center gap-0.5">
-                              <span class="text-[8.5px] font-bold text-ink-primary">2</span>
-                              <div class="w-6 sm:w-7 bg-purple-500 rounded-t h-1"></div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="grid grid-cols-4 gap-1 text-center text-[8.5px] text-ink-secondary pt-1 pl-5">
-                          <span>Facebook</span>
-                          <span>Instagram</span>
-                          <span>Data</span>
-                          <span class="truncate">Google Sheets</span>
-                        </div>
-                      </div>
-
-                      <!-- Recent Activity Panel (Matches image_22cd01.png) -->
-                      <div class="md:col-span-5 bg-surface-primary p-2.5 rounded-lg border border-border-subtle flex flex-col justify-between">
-                        <div>
-                          <div class="flex items-center justify-between mb-1.5">
-                            <div>
-                              <div class="text-[11px] font-bold text-ink-primary">Activity</div>
-                              <div class="text-[8.5px] text-ink-muted">Recent team updates</div>
-                            </div>
-                            <span class="text-[8.5px] px-1.5 py-0.5 rounded bg-teal-50 text-brand-teal font-medium">Filters 1</span>
-                          </div>
-                          <div class="flex items-center justify-between text-[8px] text-ink-muted mb-2 pb-1 border-b border-border-subtle">
-                            <span class="px-1.5 py-0.5 rounded bg-surface-secondary border border-border-subtle text-ink-primary">All users ▾</span>
-                            <span>Last 30 Days</span>
-                          </div>
-                          <div class="space-y-1.5 text-[9.5px]">
-                            <div class="pb-1.5 border-b border-border-subtle flex items-start justify-between gap-1.5">
-                              <div>
-                                <div class="font-medium text-ink-primary">Team member <span class="font-normal text-ink-secondary">created a lead</span></div>
-                                <div class="flex items-center gap-1 mt-0.5">
-                                  <span class="px-1.5 py-0.2 bg-blue-50 text-blue-700 rounded text-[8.5px]">Leads</span>
-                                  <span class="text-brand-teal font-medium">Facebook</span>
-                                </div>
-                              </div>
-                              <span class="text-[8.5px] text-ink-muted shrink-0">1h ago</span>
-                            </div>
-                            <div class="flex items-start justify-between gap-1.5">
-                              <div>
-                                <div class="font-medium text-ink-primary">Team member <span class="font-normal text-ink-secondary">created a lead</span></div>
-                                <div class="flex items-center gap-1 mt-0.5">
-                                  <span class="px-1.5 py-0.2 bg-blue-50 text-blue-700 rounded text-[8.5px]">Leads</span>
-                                  <span class="text-brand-teal font-medium">Facebook</span>
-                                </div>
-                              </div>
-                              <span class="text-[8.5px] text-ink-muted shrink-0">4h ago</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="pt-1.5 mt-1.5 border-t border-border-subtle text-[8px] text-center text-ink-muted">
-                          Showing 20 of 115 activities • Auto-refreshes every 30s
-                        </div>
-                      </div>
-                    </div>
-
-                  </div>
+              <!-- Graceful Fallback UI if video playback or asset loading fails -->
+              <div
+                id="hero-video-fallback"
+                class="hidden absolute inset-0 bg-brand-forest text-ink-onDark flex flex-col items-center justify-center text-center"
+              >
+                <img
+                  src="image_22cd01.png"
+                  alt="Saga Luxury Properties CRM Dashboard Preview"
+                  class="w-full h-full object-contain"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                />
+                <div class="hidden flex-col items-center justify-center p-6 max-w-md space-y-2" style="display: none;">
+                  <span class="text-xs font-semibold uppercase tracking-[0.14em] text-brand-orange">Saga Luxury Properties CRM</span>
+                  <p class="text-xs sm:text-sm text-ink-onDark/90 leading-relaxed">
+                    Place your MP4 video file in the same folder as <code class="px-1.5 py-0.5 rounded bg-white/10 text-teal-300 font-mono">index.html</code> named <code class="px-1.5 py-0.5 rounded bg-white/10 text-teal-300 font-mono">saga-hero-animation.mp4</code>.
+                  </p>
                 </div>
               </div>
             </div>
@@ -914,68 +681,6 @@
               </div>
             </div>
           </article>
-
-          <!-- 10. Attendance (Full-Width Directly Inspected Feature Card - 12 Cols) -->
-          <article class="reveal tilt-card lg:col-span-12 bg-surface-primary rounded-[16px] border border-border-strong p-6 sm:p-8 shadow-card hover:shadow-card-hover">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              <div class="lg:col-span-6">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-brand-forest text-ink-onDark text-xs font-semibold mb-4">
-                  <span class="w-1.5 h-1.5 rounded-full bg-teal-300"></span>
-                  10 · Attendance (Directly Verified)
-                </div>
-                <h3 class="text-xl sm:text-2xl font-bold text-ink-primary mb-3">
-                  Shift check-in controls, optional photo input &amp; attendance records
-                </h3>
-                <p class="text-sm sm:text-base text-ink-secondary leading-relaxed mb-5">
-                  Provides a dedicated Check-in / Check-out panel with GPS-location messaging, optional camera capture or photo upload before starting a shift, and a searchable attendance table with date-range filters.
-                </p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-ink-secondary">
-                  <div class="flex items-center gap-2 p-2.5 rounded-lg bg-surface-secondary border border-border-subtle">
-                    <span class="w-2 h-2 rounded-full bg-brand-teal shrink-0"></span>
-                    <span><strong>Shift Controls:</strong> Capture photo, Upload photo &amp; Start Shift buttons</span>
-                  </div>
-                  <div class="flex items-center gap-2 p-2.5 rounded-lg bg-surface-secondary border border-border-subtle">
-                    <span class="w-2 h-2 rounded-full bg-brand-teal shrink-0"></span>
-                    <span><strong>Quick Date Filters:</strong> Today, Yesterday, Last 7 days, Current Month</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Mini Faithful Recreation of Attendance Screen -->
-              <div class="lg:col-span-6 bg-surface-secondary rounded-[12px] border border-border-subtle p-4">
-                <div class="grid grid-cols-1 sm:grid-cols-12 gap-3">
-                  <div class="sm:col-span-7 bg-surface-primary p-3 rounded-lg border border-border-subtle space-y-2">
-                    <div class="text-xs font-bold text-ink-primary">Check-in / Check-out</div>
-                    <div class="text-[10px] text-ink-secondary bg-surface-secondary p-2 rounded border border-border-subtle flex items-start gap-1.5">
-                      <span class="text-brand-teal font-bold">📍</span>
-                      <span>We will capture your current GPS location when you start your shift and keep it updated while you are online.</span>
-                    </div>
-                    <div class="w-full py-1.5 text-center text-[10px] font-medium text-ink-primary bg-teal-900/10 border border-brand-teal/40 rounded">
-                      📷 Capture photo
-                    </div>
-                    <div class="w-full py-1.5 text-center text-[10px] font-medium text-ink-primary bg-teal-900/10 border border-brand-teal/40 rounded">
-                      ↑ Upload photo
-                    </div>
-                    <div class="w-full py-1.5 text-center text-[10px] font-semibold text-white bg-brand-teal rounded">
-                      Start Shift
-                    </div>
-                  </div>
-                  <div class="sm:col-span-5 flex flex-col justify-between bg-surface-primary p-3 rounded-lg border border-border-subtle">
-                    <div class="flex items-center justify-between text-[10px] mb-1.5">
-                      <span class="font-semibold text-ink-primary">Check-in photo (optional)</span>
-                      <span class="text-[8.5px] text-ink-muted uppercase">OPTIONAL</span>
-                    </div>
-                    <div class="flex-1 min-h-[96px] rounded bg-[#2F2F2F] flex items-center justify-center p-2 text-center border border-dashed border-border-strong">
-                      <span class="text-[9px] text-white/60">Allow camera access to capture a fresh photo.</span>
-                    </div>
-                    <div class="text-[8.5px] text-ink-muted mt-1.5 leading-tight">
-                      You can capture a new photo or upload one from your device.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
         </div>
 
         <!-- Tier 2: Remaining 13 Verified Sidebar Modules Grid -->
@@ -1154,25 +859,6 @@
             <p class="text-xs text-ink-secondary leading-relaxed">
               Existing Approvals navigation module located in the primary sidebar.
             </p>
-          </div>
-
-          <!-- 16. Global Config -->
-          <div class="reveal bg-surface-primary p-5 rounded-[14px] border border-border-subtle hover:border-border-strong transition-all shadow-sm sm:col-span-2 lg:col-span-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div class="flex items-start sm:items-center gap-4">
-              <span class="w-10 h-10 rounded-lg bg-surface-secondary border border-border-subtle flex items-center justify-center text-brand-forest shrink-0">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg>
-              </span>
-              <div>
-                <div class="flex items-center gap-2">
-                  <h4 class="text-base font-bold text-ink-primary">Global Config</h4>
-                  <span class="text-[11px] font-medium text-ink-muted">· 16 · Module</span>
-                </div>
-                <p class="text-xs text-ink-secondary leading-relaxed mt-0.5">
-                  Configuration-related navigation area located in the primary sidebar.
-                </p>
-              </div>
-            </div>
-            <span class="text-xs font-medium text-brand-teal shrink-0">Configuration Area</span>
           </div>
 
         </div>
@@ -2209,6 +1895,39 @@
         revealElements.forEach(el => observer.observe(el));
       } else {
         revealElements.forEach(el => el.classList.add('is-visible'));
+      }
+
+      // 4b. Hero Video Playback, Reduced-Motion Support & Graceful Error Fallback
+      const heroVideo = document.getElementById('hero-crm-video');
+      const heroVideoSource = document.getElementById('hero-crm-video-source');
+      const heroVideoFallback = document.getElementById('hero-video-fallback');
+
+      if (heroVideo) {
+        const showVideoFallback = () => {
+          heroVideo.classList.add('hidden');
+          if (heroVideoFallback) {
+            heroVideoFallback.classList.remove('hidden');
+          }
+        };
+
+        heroVideo.addEventListener('error', showVideoFallback);
+        if (heroVideoSource) {
+          heroVideoSource.addEventListener('error', showVideoFallback);
+        }
+
+        if (prefersReducedMotion) {
+          heroVideo.removeAttribute('autoplay');
+          heroVideo.pause();
+        } else {
+          heroVideo.muted = true;
+          heroVideo.playsInline = true;
+          const playPromise = heroVideo.play();
+          if (playPromise !== undefined) {
+            playPromise.catch(() => {
+              // Keeps poster frame visible if the browser blocks autoplay
+            });
+          }
+        }
       }
 
       // 5. Restrained 3D Card Hover on Pointer Devices Only
